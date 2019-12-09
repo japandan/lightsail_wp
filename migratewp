@@ -1,0 +1,12 @@
+#!/bin/bash
+# these commands will restore the wordpress site from a backup
+# this should create a wordpress multi-site for now.  We may need to convert later.
+# we will change the WP site ID to the new domain location after copying files and wp mysql db
+#
+# Retrieve the backups
+echo "type the date of the backups in format YYYY-MM-DD"
+read backupdate
+scp -P1965 danvogel@asus.datos.asia:/backupdir/wordpress.$backupdate.sql /root/
+scp -P1965 danvogel@asus.datos.asia:/backupdir/html.$backupdate.tar.gz /root/
+scp -P1965 danvogel@asus.datos.asia:/backupdir/etc.$backupdate.tar.gz /root/
+scp -P1965 danvogel@asus.datos.asia:/backupdir/scripts /root/
