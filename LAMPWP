@@ -30,7 +30,9 @@ echo "create database wordpress;">dbsetup.sql
 echo "create user wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "flush privileges;">>dbsetup.sql
-echo "#mysql_secure_installation should be run manually or automated.">INSTALL.LOG
-mysql -uroot -p""<dbsetup.sql >>INSTALL.LOG
-systemctl start httpd>>INSTALL.LOG
+echo "#mysql_secure_installation should be run manually or automated."
+mysql -uroot -p""<dbsetup.sql 
+systemctl start httpd
 systemctl enable http
+echo "HTTPD is running. If mysql <dbsetup.sql failed, run now"
+echo "done".
