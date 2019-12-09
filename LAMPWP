@@ -3,7 +3,7 @@
 # mysql & http
 echo "Begin setup of LAMP and Wordpress">/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
-yum install -y epel-release mariadb-server wget httpd 
+yum install -y epel-release mariadb-server wget httpd mod_ssl
 # remove test123 page
 rm /etc/httpd/conf.d/welcome.conf 
 systemctl start mariadb
