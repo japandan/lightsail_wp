@@ -13,3 +13,19 @@ scp -P1965 danvogel@asus.datos.asia:/backupdir/wordpress.$backupdate.sql /root/
 scp -P1965 danvogel@asus.datos.asia:/backupdir/html.$backupdate.tar.gz /root/
 scp -P1965 danvogel@asus.datos.asia:/backupdir/etc.$backupdate.tar.gz /root/
 scp -P1965 danvogel@asus.datos.asia:/backupdir/scripts /root/
+##
+## delete the existing wordpress database and copy from backup
+mysql -uroot 
+MariaDB[(none)]> drop database wordpress;
+MariaDB[(node)]> create database wordpress;
+quit;
+mysql -uwpadmin -pChangeM3 wordpress< wordpress.$backupdate.sql
+# now the password for wpadmin will not match the password in the old site's
+# wp-config.php file (unless it is "ChangeM3").  Change the password in mysql 
+# for wpadmin to match the password in /var/www/html/wp-config.php
+# Check the {password, username, database name, host} using this command
+grep DB_ /var/www/html/wp-config.php
+# Set the password using this command.
+#
+# also you will need to use mysql to change the wp_options id#1,2 which contains the 
+# name of the old wordpress URL/Home
