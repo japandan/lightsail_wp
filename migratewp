@@ -3,6 +3,9 @@
 # this should create a wordpress multi-site for now.  We may need to convert later.
 # we will change the WP site ID to the new domain location after copying files and wp mysql db
 #
+#for ease of use, I recommend executing ssh-keygen and ssh-copy-id to transfer ssh key to the backup
+#server so scp & ssh do not prompt for passwords.
+#
 # Retrieve the backups
 echo "type the date of the backups in format YYYY-MM-DD"
 read backupdate
