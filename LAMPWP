@@ -1,25 +1,29 @@
 #!/bash/bin
+# AWS Lightsail Launch Script
 # mysql & http
+echo "Begin setup of LAMP and Wordpress">/root/INSTALL.LOG
+echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
 yum install -y epel-release mariadb-server wget httpd 
 # remove test123 page
 rm /etc/httpd/conf.d/welcome.conf 
 systemctl start mariadb
 systemctl enable mariadb
-#there is no root password on mysql yet
-#mysql_secure_installation should be run manually or automated.
+echo "there is no root password on mysql yet" >>/root/INSTALL.LOG
+echo "mysql_secure_installation should be run manually or automated.">>/root/INSTALL.LOG
 #
 # php 7.3 install
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum-config-manager --enable remi-php73
 yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql
-php -v
+php -v >>/root/INSTALL.LOG
 #
 #wordpress install
-cd
+cd /root
+echo "Downloading latest version of Wordpress into /root">>INSTALL.LOG
 wget http://wordpress.org/latest.tar.gz
 tar -xzvf latest.tar.gz
-rsync -avP ~/wordpress/ /var/www/html/
-# edit wp-config to add wordpress database name and user and password
+rsync -avP /root/wordpress/ /var/www/html/
+echo "Editing wp-config to add wordpress database name and user and password 'ChangeM3'">>INSTALL.LOG
 cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 sed -i 's/database_name_here/wordpress/' /var/www/html/wp-config.php
 sed -i 's/username_here/wpadmin/'  /var/www/html/wp-config.php
@@ -34,5 +38,5 @@ echo "#mysql_secure_installation should be run manually or automated."
 mysql -uroot -p""<dbsetup.sql 
 systemctl start httpd
 systemctl enable http
-echo "HTTPD is running. If mysql <dbsetup.sql failed, run now"
-echo "done".
+echo "HTTPD is running. If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LOG
+echo "done".>>/root/INSTALL.LOG
