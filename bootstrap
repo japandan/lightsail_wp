@@ -1,0 +1,5 @@
+## as an option to pasting the LAMPWP script into AWS Lightsail script field for 
+## building a new instance.  
+yum install -y wget
+wget https://datostech.com/uploads/LAMPWP
+sh ./LAMPWP
