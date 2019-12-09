@@ -3,12 +3,10 @@
 yum install -y epel-release mariadb-server wget httpd 
 # remove test123 page
 rm /etc/httpd/conf.d/welcome.conf 
-systemctl start httpd
-systemctl enable http
 systemctl start mariadb
 systemctl enable mariadb
-#mysql_secure_installation should be run manually or automated.
 #there is no root password on mysql yet
+#mysql_secure_installation should be run manually or automated.
 #
 # php 7.3 install
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
@@ -32,4 +30,7 @@ echo "create database wordpress;">dbsetup.sql
 echo "create user wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "flush privileges;">>dbsetup.sql
-mysql -uroot -p""<dbsetup.sql
+echo "#mysql_secure_installation should be run manually or automated.">INSTALL.LOG
+mysql -uroot -p""<dbsetup.sql >>INSTALL.LOG
+systemctl start httpd>>INSTALL.LOG
+systemctl enable http
