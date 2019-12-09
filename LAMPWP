@@ -21,15 +21,15 @@ cd
 wget http://wordpress.org/latest.tar.gz
 tar -xzvf latest.tar.gz
 rsync -avP ~/wordpress/ /var/www/html/
+# edit wp-config to add wordpress database name and user and password
+cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+sed -i 's/database_name_here/wordpress/' /var/www/html/wp-config.php
+sed -i 's/username_here/wpadmin/'  /var/www/html/wp-config.php
+sed -i 's/password_here/ChangeM3/' /var/www/html/wp-config.php
+#
 # create database in mysql for new install of wp
 echo "create database wordpress;">dbsetup.sql
 echo "create user wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "flush privileges;">>dbsetup.sql
 mysql -uroot -p""<dbsetup.sql
-cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
-# edit wp-config to add wordpress database name and user and password
-sed -i 's/database_name_here/wordpress/' /var/www/html/wp-config.php
-sed -i 's/username_here/wpadmin/'  /var/www/html/wp-config.php
-sed -i 's/password_here/ChangeM3/' /var/www/html/wp-config.php
-#
