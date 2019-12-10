@@ -2,7 +2,7 @@
 #
 # this will install certbot and create ssl certificate for the new site
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
-sudo yum install -y certbot python2-certbot-apache
+sudo yum install -y certbot python2-certbot-apache bind-utils
 ## make sure that you have virtual host config in apache for example /etc/httpd/conf.d/vhosts.conf
 sudo cat >/etc/httpd/conf.d/vhosts.conf <<'EOF'
 <VirtualHost *:80>
