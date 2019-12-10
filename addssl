@@ -3,13 +3,14 @@
 # this will install certbot and create ssl certificate for the new site
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
 sudo yum install -y certbot python2-certbot-apache
-## make sure that you have virtual host config in apache for example /etc/httpd/conf.d/vhost.conf
-#
-#<VirtualHost *:80>
-# DocumentRoot "/var/www/html"
-# ServerName aws.datos.asia
-# Other directives here
-#</VirtualHost>
+## make sure that you have virtual host config in apache for example /etc/httpd/conf.d/vhosts.conf
+sudo cat >/etc/httpd/conf.d/vhosts.conf <<'EOF'
+<VirtualHost *:80>
+ DocumentRoot "/var/www/html"
+ ServerName www.datos.asia
+</VirtualHost>
+EOF
+sudo systemctl restart httpd
 certbot --apache
 #Congratulations! You have successfully enabled https://aws.datos.asia and https://vhost1.datos.asia
 #You should test your configuration at:
