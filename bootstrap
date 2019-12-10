@@ -2,4 +2,4 @@
 ## building a new instance.  
 yum install -y wget
 wget https://raw.githubusercontent.com/japandan/lightsail_wp/master/LAMPWP
-sh ./LAMPWP >INSTALL.LOG
+sh ./LAMPWP >/root/INSTALL1.LOG
