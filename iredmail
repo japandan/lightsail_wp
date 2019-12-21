@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# script to install iredmail and restore from backups on a new server
+# Author: Daniel Vogel
+# Date: 21 Dec 2019
+#
+if [ getenforce ]; then
+   echo 'iredmail will not work with selinux.  We will disable it now.'
+   setenforce 0
+   sed -i.bak 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+fi
