@@ -7,5 +7,5 @@
 if [ getenforce ]; then
    echo 'iredmail will not work with selinux.  We will disable it now.'
    setenforce 0
-   sed -i.bak 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+   sed -i.bak 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 fi
