@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# this script will rebuild a lightsail instance from a snapshot
+#
 sudo yum install awscli
 echo create keys in lightsail console for API use
 echo know your aws_access_key & aws_secret_access_key 
