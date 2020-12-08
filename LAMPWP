@@ -36,7 +36,11 @@ echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'Ch
 echo "flush privileges;">>dbsetup.sql
 echo "#mysql_secure_installation should be run manually or automated."
 mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
-systemctl start httpd
+systemctl start httpdgit clone https://github.com/japandan/lightsail_wp.git
 systemctl enable http
 echo "HTTPD is running. If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LOG
 echo "done".>>/root/INSTALL.LOG
+#
+# install git and download the repo with other scripts
+yum install git
+git clone https://github.com/japandan/lightsail_wp.git
