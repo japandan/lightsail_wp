@@ -8,6 +8,7 @@ sudo cat >/etc/httpd/conf.d/vhosts.conf <<'EOF'
 <VirtualHost *:80>
  DocumentRoot "/var/www/html"
  ServerName www.datos.asia
+ ServerAlias datos.asia
 </VirtualHost>
 EOF
 sudo systemctl restart httpd
