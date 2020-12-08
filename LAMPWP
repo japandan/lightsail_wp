@@ -1,5 +1,5 @@
 #!/bash/bin
-# AWS Lightsail Launch Script
+# AWS Lightsail Launch Script to create LAMP server by adding mysql, php, and httpd
 # mysql & http
 echo "Begin setup of LAMP and Wordpress">/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
