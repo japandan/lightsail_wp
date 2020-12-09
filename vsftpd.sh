@@ -12,14 +12,13 @@ sudo chmod -R g+w /var/www/html
 ##
 ##  edit /etc/vsftpd/vsftpd.conf to allow pasv mode
 # add these lines and edit the LightSail network to allow TCP ports 64000-64300
-sudo chmod u+w /etc/vsftpd/vsftpd.conf
 sudo chown -R apache:apache /var/www/html
-sudo cat >>/etc/vsftpd/vsftpd.conf <<'EOF'
-pasv_enable=YES
-pasv_min_port=64000
-pasv_max_port=64300
-pasv_address=3.114.205.254
-listen=YES
-# comment listen_ipv6 or set to NO
-listen_ipv6=NO
-EOF
+#
+# edit vsftpd.conf to enable passive ftp
+#
+echo "### enable ftp for wordpress updates ###" | sudo tee -a /etc/vsftpd.vsftpd.conf
+echo "pasv_enable=YES" | sudo tee -a /etc/vsftpd/vsftpd.conf
+echo "pasv_min_port=64000" | sudo tee -a /etc/vsftpd/vsftpd.conf
+echo "pasv_max_port=64300" | sudo tee -a /etc/vsftpd/vsftpd.conf
+echo "pasv_address=3.114.205.254" | sudo tee -a /etc/vsftpd/vsftpd.conf
+sudo sed -i 's/listen=NO/listen=YES/' /etc/vsftpd/vsftpd.conf
