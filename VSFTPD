@@ -12,6 +12,7 @@ chmod -R g+w /vae/www/html
 ##
 ##  edit /etc/vsftpd/vsftpd.conf to allow pasv mode
 # add these lines and edit the LightSail network to allow TCP ports 64000-64300
+sudo cat >>/etc/vsftpd/vsftpd.conf <<'EOF'
 pasv_enable=YES
 pasv_min_port=64000
 pasv_max_port=64300
@@ -19,3 +20,4 @@ pasv_address=3.114.205.254
 listen=YES
 # comment listen_ipv6 or set to NO
 listen_ipv6=NO
+EOF
