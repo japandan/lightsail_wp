@@ -17,7 +17,7 @@ sudo chown -R apache:apache /var/www/html
 # edit vsftpd.conf to enable passive ftp
 #
 sudo cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak
-echo "### enable ftp for wordpress updates ###" | sudo tee -a /etc/vsftpd.vsftpd.conf
+echo "### enable ftp for wordpress updates ###" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_enable=YES" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_min_port=64000" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_max_port=64300" | sudo tee -a /etc/vsftpd/vsftpd.conf
