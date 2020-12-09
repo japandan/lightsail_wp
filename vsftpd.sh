@@ -21,7 +21,11 @@ echo "### enable ftp for wordpress updates ###" | sudo tee -a /etc/vsftpd/vsftpd
 echo "pasv_enable=YES" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_min_port=64000" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_max_port=64300" | sudo tee -a /etc/vsftpd/vsftpd.conf
+## 
+## tell vsftp the external global static IP of the server
 echo "pasv_address=3.114.205.254" | sudo tee -a /etc/vsftpd/vsftpd.conf
+##
+## Listen on ipv4 network
 echo "listen=YES"     | sudo tee -a /etc/vsftpd/vsftpd.conf
 #
 sudo sed -i 's/^listen=NO/#listen=NO/' /etc/vsftpd/vsftpd.conf
