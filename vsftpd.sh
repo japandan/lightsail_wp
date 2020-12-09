@@ -8,7 +8,7 @@ sudo setsebool -P ftpd_full_access on
 sudo setsebool -P ftpd_use_passive_mode  on
 sudo yum install vsftpd
 user useradd ftpuser -d/var/www/html -Gapache
-chmod -R g+w /vae/www/html
+chmod -R g+w /var/www/html
 ##
 ##  edit /etc/vsftpd/vsftpd.conf to allow pasv mode
 # add these lines and edit the LightSail network to allow TCP ports 64000-64300
