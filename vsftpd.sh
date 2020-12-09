@@ -13,6 +13,7 @@ sudo chmod -R g+w /var/www/html
 ##  edit /etc/vsftpd/vsftpd.conf to allow pasv mode
 # add these lines and edit the LightSail network to allow TCP ports 64000-64300
 sudo chmod u+w /etc/vsftpd/vsftpd.conf
+sudo chown -R apache:apache /var/www/html
 sudo cat >>/etc/vsftpd/vsftpd.conf <<'EOF'
 pasv_enable=YES
 pasv_min_port=64000
