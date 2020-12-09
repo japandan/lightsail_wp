@@ -22,3 +22,7 @@ echo "pasv_min_port=64000" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_max_port=64300" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_address=3.114.205.254" | sudo tee -a /etc/vsftpd/vsftpd.conf
 sudo sed -i 's/listen=NO/listen=YES/' /etc/vsftpd/vsftpd.conf
+#
+# start the service.  I would stop it and only start for testing and wordpress updates
+#
+systemctl start vsftpd
