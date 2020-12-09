@@ -14,6 +14,8 @@ Login to the server and set up the vhosts.conf and ssl.  Scripts are in this rep
 
 5. Run the script addssl.sh to install certbot and the free ssl certificates
 
+6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group.
+
 
 PROBLEMS Encountered:
 <pre>
