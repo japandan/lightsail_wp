@@ -32,6 +32,9 @@ Login to the server and set up the vhosts.conf and ssl.  Scripts are in this rep
 
   /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
 
+10. The wordpress site should now work.  You will need to replace any hardcoded URL with the new website. If the wordpress domain name has changed, this will need to be fixed in the mysql database. 
+i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
+
 PROBLEMS Encountered:
 <pre>
 1. SELINUX causes problems.  If using SELINUX enforcing, change this boolean for httpd_anon_write->On
