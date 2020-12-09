@@ -23,7 +23,6 @@ echo "pasv_min_port=64000" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_max_port=64300" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "pasv_address=3.114.205.254" | sudo tee -a /etc/vsftpd/vsftpd.conf
 echo "listen=YES"     | sudo tee -a /etc/vsftpd/vsftpd.conf
-echo "listen_ipv6=NO" | sudo tee -a /etc/vsftpd/vsftpd.conf
 #
 sudo sed -i 's/^listen=NO/#listen=NO/' /etc/vsftpd/vsftpd.conf
 sudo sed -i 's/^listen_ipv6=YES/#listen_ipv6=YES/' /etc/vsftpd/vsftpd.conf
