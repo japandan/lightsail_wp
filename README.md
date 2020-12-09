@@ -24,7 +24,13 @@ Login to the server and set up the vhosts.conf and ssl.  Scripts are in this rep
 
 7. Run the script to copy a database backup from a remote server to this server and restore wordpress.
    #bash migratewp.sh
+   
+8. Copy the /var/www/html directory and files from a backup. 
+   #tar -xvzf /root/html.2020-12-08.tar.gz 
 
+9. This will change the default wp-config.php file and will break wordpress until you update the passwords. You will most likely need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
+
+  /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
 
 PROBLEMS Encountered:
 <pre>
