@@ -14,8 +14,27 @@ Login to the server and set up the vhosts.conf and ssl.  Scripts are in this rep
 
 5. Run the script addssl.sh to install certbot and the free ssl certificates
 
-6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group.
+6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
 
+  >#yum install ftp
+  
+  >#passwd ftpuser   
+  
+  >#bash ./vsftpd.sh
+
+7. Run the script to copy a database backup from a remote server to this server and restore wordpress.
+   #bash migratewp.sh
+   
+8. Copy the /var/www/html directory and files from a backup. 
+   #tar -xvzf /root/html.2020-12-08.tar.gz 
+
+9. This will change the default wp-config.php file and will break wordpress until you update the passwords. You will most likely need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
+
+  /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
+
+10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
+
+i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
 PROBLEMS Encountered:
 <pre>
