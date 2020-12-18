@@ -2,6 +2,7 @@
 # 
 # Script to configure Postfix to work with Amazon SES
 #
+# Asia Pacific region, replace with the region of your AWS VM
 region="ap-northeast-1"
 smtp_host="email-smtp.${region}.amazonaws.com"
 #
