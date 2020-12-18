@@ -1,4 +1,7 @@
 #!/bin/bash
+# 
+# Script to configure Postfix to work with Amazon SES
+#
 region="ap-northeast-1"
 smtp_host="email-smtp.${region}.amazonaws.com"
 #
