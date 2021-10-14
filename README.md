@@ -5,7 +5,7 @@ STEPS TO INSTALL
 1. login to lightsail.aws.amazon.com and [create instance].  Choose [OS Only] CentOS 7 2009-01
 
 2. In the box for Launch script, copy&paste the text from the "bootstrap" file in this repo.  This will automatically copy the
-   this repo and us it to configure the server for wordpress. It will install php, wordpress, mysql, etc.
+   this repo and use it to configure the server for Wordpress. It will install PHP7.3, Wordpress, MariaDB (MySQL), etc.
 
 3. Set up the static public IP of the lightsail instance and try to open the webpage at that IP.  You may have to open http & https in the Lightsail network settings and the firewall for the instance. 
 4. At this point, open your browser to website www.datos.asia to see if you are at a WordPress Setup Screen.  If not, you can login to the instance via the lightsail console to check if httpd is running.  
