@@ -3,7 +3,7 @@
 # mysql & http
 echo "Begin setup of LAMP and Wordpress">/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
-yum install -y epel-release mariadb-server wget httpd mod_ssl
+yum install -y epel-release mariadb-server httpd mod_ssl
 # remove test123 page
 rm /etc/httpd/conf.d/welcome.conf 
 systemctl start mariadb
@@ -37,7 +37,6 @@ echo "flush privileges;">>dbsetup.sql
 echo "#mysql_secure_installation should be run manually or automated."
 mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
 # install git and download the repo with other scripts
-yum install -y git
 git clone https://github.com/japandan/lightsail_wp.git
 cd lightsail_wp/
 # setup web server
