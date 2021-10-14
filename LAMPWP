@@ -50,7 +50,7 @@ echo "If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LOG
 # create user and copy keys for ssh login
 useradd danvogel
 mkdir -p /home/danvogel/.ssh
-cp /root/.ssh/authorized_keys /home/danvogel/.ssh/
+cp /home/centos/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
 hostnamectl set-hostname datos >>/root/INSTALL.LOG
 echo "done.">>/root/INSTALL.LOG
