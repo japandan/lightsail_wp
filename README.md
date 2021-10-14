@@ -25,8 +25,9 @@ i.e.
    #bash migratewp.sh
 </pre>
 
-8. Copy the /var/www/html directory and files from a backup. 
+8. Copy the /var/www/html directory and files from a backup.  As root do type:
 <pre>
+  #cd /
   #tar -xvzf /root/html.2020-12-08.tar.gz 
 </pre>
 
