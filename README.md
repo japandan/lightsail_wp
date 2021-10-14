@@ -20,7 +20,7 @@ i.e.
    #bash ./vsftpd.sh
    </pre>
    
-7. Run the script to copy a database backup from a remote server to this server and restore wordpress. Just enter the backup date in YYYY-MM-DD.
+7. Run the script to copy a database backup from a remote server to this server and restore wordpress. Just enter the backup date in YYYY-MM-DD. This will delete the current MySQL wordpress database and try to create a new one with the latest backup that you specified.
 <pre>
    #bash migratewp.sh
 </pre>
