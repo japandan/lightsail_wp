@@ -37,7 +37,7 @@ grep DB_ /var/www/html/wp-config.php
 #|         2 | home        | http://datostech.com |
 #+-----------+-------------+----------------------+
 # Change the option_values with this command
-#MariaDB [wordpress]> update multi_options set option_value="http://aws.datos.asia" where option_id<3;
+#MariaDB [wordpress]> update multi_options set option_value="http://www.datos.asia" where option_id<3;
 #Query OK, 2 rows affected (0.00 sec)Rows matched: 2  Changed: 2  Warnings: 0
 #
 # check them again...
@@ -45,7 +45,7 @@ grep DB_ /var/www/html/wp-config.php
 #+-----------+-------------+-----------------------+
 #| option_id | option_name | option_value          |
 #+-----------+-------------+-----------------------+
-#|         1 | siteurl     | http://aws.datos.asia |
-#|         2 | home        | http://aws.datos.asia |
+#|         1 | siteurl     | http://www.datos.asia |
+#|         2 | home        | http://www.datos.asia |
 #+-----------+-------------+-----------------------+
 #2 rows in set (0.00 sec)
