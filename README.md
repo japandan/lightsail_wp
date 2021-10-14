@@ -13,17 +13,18 @@ i.e.
 <pre>
 #systemctl status httpd
 </pre>
-5. Run the script addssl.sh to install certbot and the free ssl certificates.  This will also create the /etc/httpd/conf.d/vhosts.conf file.
+5. Run the script addssl.sh to install certbot and the free ssl certificates.  This will also create the /etc/httpd/conf.d/vhosts.conf file. Test by going to https://datos.asia with a web browser.
 6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
-
-<pre>
+   <pre>
    #passwd ftpuser     
    #bash ./vsftpd.sh
-</pre>
+   </pre>
+   
 7. Run the script to copy a database backup from a remote server to this server and restore wordpress. Just enter the backup date in YYYY-MM-DD.
 <pre>
    #bash migratewp.sh
 </pre>
+
 8. Copy the /var/www/html directory and files from a backup. 
 <pre>
   #tar -xvzf /root/html.2020-12-08.tar.gz 
