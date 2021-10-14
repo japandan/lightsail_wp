@@ -33,7 +33,7 @@ i.e.
 
   /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
 
-10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in <pre>migratewp.sh</pre> to change the URL of wordpress stored in the mysql database.
+10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
 
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
