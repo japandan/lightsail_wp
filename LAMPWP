@@ -1,7 +1,7 @@
 #!/bash/bin
 # AWS Lightsail Launch Script to create LAMP server by adding mysql, php, and httpd
 # mysql & http
-echo "Begin setup of LAMP and Wordpress">/root/INSTALL.LOG
+echo "Begin LAMPWP setup script for MariaDB,PHP 7.3 and Wordpress">>/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
 yum install -y epel-release mariadb-server httpd mod_ssl
 # remove test123 page
@@ -36,9 +36,8 @@ echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'Ch
 echo "flush privileges;">>dbsetup.sql
 echo "#mysql_secure_installation should be run manually or automated."
 mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
-# install git and download the repo with other scripts
-git clone https://github.com/japandan/lightsail_wp.git
-cd lightsail_wp/
+#
+cd /root/lightsail_wp/
 # setup web server
 cp vhost.conf /etc/httpd/conf.d/
 #start webserver
@@ -53,5 +52,5 @@ useradd danvogel
 mkdir -p /home/danvogel/.ssh
 cp /root/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
-hostnamectl set-hostname datos
+hostnamectl set-hostname datos >>/root/INSTALL.LOG
 echo "done.">>/root/INSTALL.LOG
