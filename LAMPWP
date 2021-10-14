@@ -54,4 +54,4 @@ mkdir -p /home/danvogel/.ssh
 cp /root/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
 hostnamectl set-hostname datos
-echo "done".>>/root/INSTALL.LOG
+echo "done.">>/root/INSTALL.LOG
