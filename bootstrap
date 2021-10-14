@@ -2,5 +2,5 @@
 ## building a new instance.
 echo "STARTING LAMP INSTALLATION" >/root/INSTALL.LOG
 yum install -y wget git >>/root/INSTALL.LOG
-git clone wget https://raw.githubusercontent.com/japandan/lightsail_wp/master/LAMPWP
+git clone https://github.com/japandan/lightsail_wp.git
 sh lightsail_wp/LAMPWP >>/root/INSTALL.LOG
