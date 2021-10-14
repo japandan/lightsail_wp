@@ -1,6 +1,6 @@
 # lightsail_wp
 Lightsail (Amazon Web Services )installation scripts for CentOS 7 to create LAMP stack and install Wordpress
-
+<pre>
 STEPS TO INSTALL
 1. login to lightsail.aws.amazon.com and [create instance].  Choose [OS Only] CentOS 7 2009-01
 
@@ -26,7 +26,8 @@ i.e.
    #bash migratewp.sh
    
 8. Copy the /var/www/html directory and files from a backup. 
-   #tar -xvzf /root/html.2020-12-08.tar.gz 
+  
+  #tar -xvzf /root/html.2020-12-08.tar.gz 
 
 9. This will change the default wp-config.php file and will break wordpress until you update the passwords. You will most likely need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
 
@@ -35,6 +36,7 @@ i.e.
 10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
 
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
+</pre>
 
 PROBLEMS Encountered:
 <pre>
