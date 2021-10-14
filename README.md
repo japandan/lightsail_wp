@@ -15,8 +15,7 @@ i.e.
 5. Run the script addssl.sh to install certbot and the free ssl certificates.  This will also create the /etc/httpd/conf.d/vhosts.conf file.
 6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
 
-   #yum install ftp
-  
+ 
    #passwd ftpuser   
    
    #bash ./vsftpd.sh
