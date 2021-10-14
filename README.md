@@ -21,7 +21,10 @@ i.e.
    #bash ./vsftpd.sh
 
 7. Run the script to copy a database backup from a remote server to this server and restore wordpress. Just enter the backup date in YYYY-MM-DD.
+
+
    #bash migratewp.sh
+   
 8. Copy the /var/www/html directory and files from a backup. 
    #tar -xvzf /root/html.2020-12-08.tar.gz 
 
