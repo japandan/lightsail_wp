@@ -36,11 +36,22 @@ echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'Ch
 echo "flush privileges;">>dbsetup.sql
 echo "#mysql_secure_installation should be run manually or automated."
 mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
-systemctl start httpdgit clone https://github.com/japandan/lightsail_wp.git
-systemctl enable http
-echo "HTTPD is running. If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LOG
-echo "done".>>/root/INSTALL.LOG
-#
 # install git and download the repo with other scripts
 yum install -y git
 git clone https://github.com/japandan/lightsail_wp.git
+cd lightsail_wp/
+# setup web server
+cp vhost.conf /etc/httpd/conf.d/
+#start webserver
+systemctl enable httpd
+systemctl start httpd
+systemctl status httpd>>/root/INSTALL.LOG
+echo "vhost www.datos.asia added.  Please check with browser" >>/root/INSTALL.LOG
+echo "If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LOG
+#
+# create user and copy keys for ssh login
+useradd danvogel
+mkdir -p /home/danvogel/.ssh
+cp /root/.ssh/authorized_keys /home/danvogel/.ssh/
+chown -R danvogel:danvogel /home/danvogel/.ssh/*
+echo "done".>>/root/INSTALL.LOG
