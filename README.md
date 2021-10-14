@@ -8,30 +8,27 @@ STEPS TO INSTALL
    this repo and us it to configure the server for wordpress. It will install php, wordpress, mysql, etc.
 
 3. Set up the static public IP of the lightsail instance and try to open the webpage at that IP.  You may have to open http & https in the Lightsail network settings and the firewall for the instance. 
-4. You can login to the instance via the lightsail console to check if httpd is running.  
+4. At this point, open your browser to website www.datos.asia to see if you are at a WordPress Setup Screen.  If not, you can login to the instance via the lightsail console to check if httpd is running.  
 i.e. 
 #systemctl status httpd
-5. At this point, open your browser to website www.datos.asia to see if you are at a WordPress Setup Screen
 
-6. Run the script addssl.sh to install certbot and the free ssl certificates
-7. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
+5. Run the script addssl.sh to install certbot and the free ssl certificates.  This will also create the /etc/httpd/conf.d/vhosts.conf file.
+6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
 
   >#yum install ftp
-  
   >#passwd ftpuser   
-  
   >#bash ./vsftpd.sh
 
-8. Run the script to copy a database backup from a remote server to this server and restore wordpress.
+7. Run the script to copy a database backup from a remote server to this server and restore wordpress.
    #bash migratewp.sh
-9. Copy the /var/www/html directory and files from a backup. 
+8. Copy the /var/www/html directory and files from a backup. 
    #tar -xvzf /root/html.2020-12-08.tar.gz 
 
-10. This will change the default wp-config.php file and will break wordpress until you update the passwords. You will most likely need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
+9. This will change the default wp-config.php file and will break wordpress until you update the passwords. You will most likely need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
 
   /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
 
-11. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
+10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
 
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
