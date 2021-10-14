@@ -7,7 +7,9 @@ STEPS TO INSTALL
 2. In the box for setup script, copy&paste the text from the "bootstrap" file in this repo.  This will automatically copy the
    LAMPWP file from this repo and us it to configure the server for wordpress. It will install php, wordpress, mysql, etc.
 
-3. Set up the public IP of the lightsail instance and try to open the webpage.  You will have to open http & https in the Lightsail network settings and the firewall for the instance.
+3. Set up the static public IP of the lightsail instance and try to open the webpage at that IP.  You will have to open http & https in the Lightsail network settings and the firewall for the instance. You can login to the instance via the lightsail console to check if httpd is running.  i.e. 
+
+ systemctl start httpd;systemctl enable httpd;systemctl status httpd;
 Login to the server and set up the vhosts.conf and ssl.  Scripts are in this repo which should be created in /root/lightsail_wp during the installation process.
 
 4. Optionally, change the ssh port by editing /etc/ssh/sshd_config, adding "port #", systemctl restart sshd, and adding the new port to the Lightsail firewall.  I should automate this so there is a non-standard ssh port.
