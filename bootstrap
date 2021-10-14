@@ -1,4 +1,4 @@
-## Paste this script into AWS Lightsail setup script field for building a new instance.
+## Paste this Launch script into AWS Lightsail Launch script field when building a new instance.
 echo "STARTING LAMP INSTALLATION" >/root/INSTALL.LOG
 yum install -y wget git >>/root/INSTALL.LOG
 git clone https://github.com/japandan/lightsail_wp.git
