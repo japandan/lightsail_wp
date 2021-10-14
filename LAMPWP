@@ -42,5 +42,5 @@ echo "HTTPD is running. If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LO
 echo "done".>>/root/INSTALL.LOG
 #
 # install git and download the repo with other scripts
-yum install git
+yum install -y git
 git clone https://github.com/japandan/lightsail_wp.git
