@@ -6,7 +6,7 @@
 # selinux creates problems so allow access to vsftpd
 sudo setsebool -P ftpd_full_access on   
 sudo setsebool -P ftpd_use_passive_mode  on
-sudo yum install vsftpd
+sudo yum install vsftpd ftp
 sudo useradd ftpuser -d/var/www/html -Gapache
 sudo chmod -R g+w /var/www/html
 ##
