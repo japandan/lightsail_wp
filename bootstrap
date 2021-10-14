@@ -1,8 +1,6 @@
 ## as an option to pasting the LAMPWP script into AWS Lightsail script field for 
 ## building a new instance.
-echo "STARTING LAMP INSTALLATION" >/root/INSTALL1.LOG
-whoami >>/root/INSTALL1.LOG
-pwd >>/root/INSTALL1.LOG
-yum install -y wget git >>/root/INSTALL1.LOG
-wget https://raw.githubusercontent.com/japandan/lightsail_wp/master/LAMPWP
-sh ./LAMPWP >>/root/INSTALL1.LOG
+echo "STARTING LAMP INSTALLATION" >/root/INSTALL.LOG
+yum install -y wget git >>/root/INSTALL.LOG
+git clone wget https://raw.githubusercontent.com/japandan/lightsail_wp/master/LAMPWP
+sh lightsail_wp/LAMPWP >>/root/INSTALL.LOG
