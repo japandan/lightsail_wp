@@ -2,7 +2,7 @@
 Lightsail (Amazon Web Services )installation scripts for CentOS 7 to create LAMP stack and install Wordpress
 
 STEPS TO INSTALL
-1. login to lightsail.aws.amazon.com and [create instance].
+1. login to lightsail.aws.amazon.com and [create instance].  Choose [OS Only] CentOS 7 2009-01
 
 2. In the box for setup script, paste the text from the bootstrap file.  This will automatically copy the
    LAMPWP file from this repo and us it to configure the server for wordpress. It will install php, wordpress, mysql, etc.
