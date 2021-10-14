@@ -8,10 +8,15 @@ STEPS TO INSTALL
    LAMPWP file from this repo and us it to configure the server for wordpress. It will install php, wordpress, mysql, etc.
 
 3. Set up the static public IP of the lightsail instance and try to open the webpage at that IP.  You will have to open http & https in the Lightsail network settings and the firewall for the instance. 
-4. You can login to the instance via the lightsail console to check if httpd is running.  i.e. systemctl start httpd;systemctl enable httpd;systemctl status httpd
-5. Login to the server and copy vhosts.conf to /etc/httpd/conf.d/ and setup ssl.  Scripts are in this repo which should be created in /root/lightsail_wp during the installation process.
-6. Run the script addssl.sh to install certbot and the free ssl certificates
-7. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
+4. You can login to the instance via the lightsail console to check if httpd is running.  
+i.e. 
+#systemctl start httpd
+#systemctl enable httpd
+#systemctl status httpd
+5. At this point, open your browser to website www.datos.asia to see if you are at a WordPress Setup Screen
+6. Login to the server and copy vhosts.conf to /etc/httpd/conf.d/ and setup ssl.  Scripts are in this repo which should be created in /root/lightsail_wp during the installation process.
+7. Run the script addssl.sh to install certbot and the free ssl certificates
+8. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
 
   >#yum install ftp
   
