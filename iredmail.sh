@@ -17,7 +17,9 @@ sed -i.bak 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 echo
 echo downloading iredmail into /root
 cd /root
-wget https://github.com/iredmail/iRedMail/archive/1.0.tar.gz
+## latest version 
+wget https://github.com/iredmail/iRedMail/archive/1.4.2.tar.gz
+#wget https://github.com/iredmail/iRedMail/archive/1.0.tar.gz
 tar -xzvf 1.0.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
