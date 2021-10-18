@@ -1,6 +1,9 @@
 #!/bash/bin
-# AWS Lightsail Launch Script to create LAMP server by adding mysql, php, and httpd
+# AWS Lightsail Launch Script to create LAMP server by adding mysql, php, and nginx
 # mysql & http
+# This will not install nginx because that will be installed along with the iredmail server
+# in a following step.
+#
 echo "Begin LAMPWP setup script for MariaDB,PHP 7.3 and Wordpress">>/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
 yum install -y epel-release mariadb-server httpd mod_ssl
