@@ -8,6 +8,9 @@
 # for example"
 echo " scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-18.tar.gz ."
 #
+echo "setting hostname in /etc/hosts"
+hostnamectl set-hostname mail.datostech.com
+sed -i s/127.0.0.1   localhost/127.0.0.1   mail.datostech.com mail localhost/ /etc/hosts
 #
 #Download the latest release of iRedMail
 #   Visit Download page to get the latest stable release of iRedMail.
