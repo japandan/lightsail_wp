@@ -4,6 +4,10 @@
 # Author: Daniel Vogel
 # Date: 21 Dec 2019
 #
+# Get the backup data from the backup server
+# for example"
+# scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-18.tar.gz .
+#
 if [ getenforce ]; then
    echo 'iredmail will not work with selinux.  We will disable it now.'
    setenforce 0
@@ -17,3 +21,4 @@ wget https://github.com/iredmail/iRedMail/archive/1.0.tar.gz
 tar -xzvf 1.0.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
+#bash iRedMail.sh
