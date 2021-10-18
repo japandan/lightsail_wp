@@ -8,6 +8,26 @@
 # for example"
 # scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-18.tar.gz .
 #
+#Download the latest release of iRedMail
+#   Visit Download page to get the latest stable release of iRedMail.
+#   Upload iRedMail to your mail server via ftp or scp or whatever method you can use, login to the server to install iRedMail. 
+#   We assume you uploaded it to /root/iRedMail-x.y.z.tar.gz (replace x.y.z by the real version number).
+#
+#    Uncompress iRedMail tarball:
+#
+# cd /root/
+# tar zxf iRedMail-x.y.z.tar.gz
+#
+# Start iRedMail installer
+#
+# It's now ready to start iRedMail installer, it will ask you several simple questions, 
+# that's all required to setup a full-featured mail server.
+#
+# cd /root/iRedMail-x.y.z/
+# bash iRedMail.sh
+
+
+
 if [ getenforce ]; then
    echo 'iredmail will not work with selinux.  We will disable it now.'
    setenforce 0
@@ -20,7 +40,7 @@ cd /root
 ## latest version 
 wget https://github.com/iredmail/iRedMail/archive/1.4.2.tar.gz
 #wget https://github.com/iredmail/iRedMail/archive/1.0.tar.gz
-tar -xzvf 1.0.tar.gz
+tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
 #
