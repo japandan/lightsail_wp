@@ -7,10 +7,11 @@ sudo yum install -y certbot python2-certbot-apache bind-utils
 sudo cat >/etc/httpd/conf.d/vhosts.conf <<'EOF'
 <VirtualHost *:80>
  DocumentRoot "/var/www/html"
- ServerName www.datos.asia
+ ServerName mail.datostech.com
  ServerAlias datos.asia
- #ServerAlias datostech.com
- #ServerAlias www.datostech.com
+ ServerAlias www.datos.asia
+ ServerAlias datostech.com
+ ServerAlias www.datostech.com
 </VirtualHost>
 EOF
 sudo systemctl restart httpd
