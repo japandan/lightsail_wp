@@ -2,11 +2,12 @@
 #
 # script to install iredmail and restore from backups on a new server
 # Author: Daniel Vogel
-# Date: 21 Dec 2019
+# Date: 18 Oct 2021
 #
 # Get the backup data from the backup server
 # for example"
-# scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-18.tar.gz .
+echo " scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-18.tar.gz ."
+#
 #
 #Download the latest release of iRedMail
 #   Visit Download page to get the latest stable release of iRedMail.
