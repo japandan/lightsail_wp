@@ -15,8 +15,8 @@ fi
 echo "Setting selinux to permissive mode"
 sed -i.bak 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 echo
-echo downloading iredmail into /root
-cd /root
+echo downloading iredmail into /opt
+cd /opt
 wget https://github.com/iredmail/iRedMail/archive/1.0.tar.gz
 tar -xzvf 1.0.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
