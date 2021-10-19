@@ -22,25 +22,25 @@ yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php
 yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql php-imap php-mbstring php73-php-intl 
 php -v >>/root/INSTALL.LOG
 #
-#wordpress install
+#wordpress install is commented out since we will be restoring from a backup.  This is a waste of time.
 cd /root
-echo "Downloading latest version of Wordpress into /root">>INSTALL.LOG
-wget http://wordpress.org/latest.tar.gz
-tar -xzvf latest.tar.gz
-mkdir /var/www/html/datostech.com
-rsync -avP /root/wordpress/ /var/www/html/
-echo "Editing wp-config to add wordpress database name and user and password 'ChangeM3'">>INSTALL.LOG
-cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
-sed -i 's/database_name_here/wordpress/' /var/www/html/wp-config.php
-sed -i 's/username_here/wpadmin/'  /var/www/html/wp-config.php
-sed -i 's/password_here/ChangeM3/' /var/www/html/wp-config.php
+#echo "Downloading latest version of Wordpress into /root">>INSTALL.LOG
+#wget http://wordpress.org/latest.tar.gz
+#tar -xzvf latest.tar.gz
+#mkdir /var/www/html/datostech.com
+#rsync -avP /root/wordpress/ /var/www/html/
+#echo "Editing wp-config to add wordpress database name and user and password 'ChangeM3'">>INSTALL.LOG
+#cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+#sed -i 's/database_name_here/wordpress/' /var/www/html/wp-config.php
+#sed -i 's/username_here/wpadmin/'  /var/www/html/wp-config.php
+#sed -i 's/password_here/ChangeM3/' /var/www/html/wp-config.php
 #
 # create database in mysql for new install of wp
 echo "create database wordpress;">dbsetup.sql
 echo "create user wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
 echo "flush privileges;">>dbsetup.sql
-echo "#mysql_secure_installation should be run manually or automated."
+echo "mysql_secure_installation should be run manually or automated."
 mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
 #
 cd /root/lightsail_wp/
