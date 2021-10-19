@@ -17,6 +17,12 @@ echo https://www.ssllabs.com/ssltest/analyze.html?d=mail.datostech.com
 echo https://www.ssllabs.com/ssltest/analyze.html?d=www.datostech.com
 #
 #   
+echo Adding more security diffie-Hellman
+openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+sed -i 'a/server/ssl_dhparam /etc/ssl/certs/dhparam.pem;/' /etc/nginx/nginx.conf
+nginx -t
+systemctl reload nginx
+#
 echo To obtain a new or tweaked   version of this certificate in the future, 
 echo simply run certbot again   with the "certonly" option. 
 echo To non-interactively renew *all* of   your certificates, run "certbot renew" 
