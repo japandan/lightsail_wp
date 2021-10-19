@@ -28,7 +28,7 @@ echo "Downloading latest version of Wordpress into /root">>INSTALL.LOG
 wget http://wordpress.org/latest.tar.gz
 tar -xzvf latest.tar.gz
 mkdir /var/www/html/datostech.com
-rsync -avP /root/wordpress/ /var/www/html/datostech.com
+rsync -avP /root/wordpress/ /var/www/html/
 echo "Editing wp-config to add wordpress database name and user and password 'ChangeM3'">>INSTALL.LOG
 cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 sed -i 's/database_name_here/wordpress/' /var/www/html/wp-config.php
