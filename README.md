@@ -39,16 +39,18 @@ i.e.
 
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
+11. Run the iredmail.sh scripts to install the mail programs.
+12. Restore the /var/vmail files from the iredmail backup.  This will recreate the mailboxes in /var/vmail/vmail1 and give you the files for restoring ldap accounts in /var/vmail/backups/ldap/.
+13. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
+14. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
+i.e. /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
+15. Use the slapadd command after systemctl stop slapd and rm /var/lib/ldap/datostech.com/* 
+slapadd -f /etc/openldap/slapd.conf -l /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
 
 PROBLEMS Encountered:
 <pre>
 1. SELINUX causes problems.  If using SELINUX enforcing, change this boolean for httpd_anon_write->On
    #setsebool -P httpd_anon_write=1
   This causes problems with permalinks because the server cannot write the .htaccess file
-  
-2./etc/httpd/conf/httpd.conf.  Edit the <directory /var/www/html> block to set "AllowOveride ALL"
-  The causes problems with permalinks because the .htaccess is ignored.
-</pre>
-
-3. Amazon SES (Simple Email Services) must be enabled for the domains that you send email.  
+2. Amazon SES (Simple Email Services) must be enabled for the domains that you send email.  
    Do this on the AWS console.  You will need to verify domains by adding the keys from AWS to your DNS.
