@@ -40,12 +40,9 @@ echo downloading iredmail into /root
 cd /root
 ## latest version 
 wget https://github.com/iredmail/iRedMail/archive/1.4.2.tar.gz
-#wget https://github.com/iredmail/iRedMail/archive/1.0.tar.gz
+#
 tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
 #
-echo "Add the FQDN for the server"
-echo "<< ERROR >> Please configure a fully qualified domain name (FQDN) in /etc/hosts before we go further.Example:127.0.0.1"
-#mail.iredmail.org mail localhost
 echo "Run #bash iRedMail.sh"
