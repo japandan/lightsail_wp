@@ -26,6 +26,10 @@ sed -i 's/127.0.0.1   localhost/127.0.0.1   mail.datos.asia mail localhost/' /et
 # It's now ready to start iRedMail installer, it will ask you several simple questions, 
 # that's all required to setup a full-featured mail server.
 #
+# Retrieve the backups
+read -p "type the date of the backups in format YYYY-MM-DD" backupdate
+scp -P1965 danvogel@asus.datos.asia:/backupdir/iredmail.$backupdate.tar.gz /root/
+#
 # cd /root/iRedMail-x.y.z/
 # bash iRedMail.sh
 #
@@ -40,7 +44,6 @@ echo downloading iredmail into /root
 cd /root
 ## latest version 
 wget https://github.com/iredmail/iRedMail/archive/1.4.2.tar.gz
-#
 tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
