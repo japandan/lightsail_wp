@@ -7,8 +7,7 @@
 #server so scp & ssh do not prompt for passwords.
 #
 # Retrieve the backups
-echo "type the date of the backups in format YYYY-MM-DD"
-read backupdate
+read -p "type the date of the backups in format YYYY-MM-DD" backupdate
 scp -P1965 danvogel@asus.datos.asia:/backupdir/wordpress.$backupdate.sql /root/
 scp -P1965 danvogel@asus.datos.asia:/backupdir/html.$backupdate.tar.gz /root/
 scp -P1965 danvogel@asus.datos.asia:/backupdir/etc.$backupdate.tar.gz /root/
