@@ -6,7 +6,7 @@
 #
 # Get the backup data from the backup server
 # for example"
-echo " scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-18.tar.gz ."
+echo " scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-19.tar.gz ."
 #
 echo "setting hostname in /etc/hosts"
 hostnamectl set-hostname mail.datostech.com
@@ -29,9 +29,7 @@ sed -i s/127.0.0.1   localhost/127.0.0.1   mail.datostech.com mail localhost/ /e
 #
 # cd /root/iRedMail-x.y.z/
 # bash iRedMail.sh
-
-
-
+#
 if [ getenforce ]; then
    echo 'iredmail will not work with selinux.  We will disable it now.'
    setenforce 0
@@ -51,4 +49,4 @@ cd iRedMail*
 echo "Add the FQDN for the server"
 echo "<< ERROR >> Please configure a fully qualified domain name (FQDN) in /etc/hosts before we go further.Example:127.0.0.1"
 #mail.iredmail.org mail localhost
-#bash iRedMail.sh
+echo "Run #bash iRedMail.sh"
