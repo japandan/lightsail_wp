@@ -2,7 +2,7 @@
 #
 # this will install certbot and create ssl certificate for the new site
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
-sudo yum install -y certbot bind-utils
+sudo yum install -y certbot-nginx bind-utils
 ## Add the server names for the ssl
 sed -i 's/server_name _;/server_name datos.asia www.datos.asia mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default.conf 
 sed -i 's/server_name _;/server_name datos.asia www.datos.asia mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default-ssl.conf
