@@ -35,6 +35,11 @@ mkdir -p /home/danvogel/.ssh
 cp /home/centos/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
 hostnamectl set-hostname datos >>/root/INSTALL.LOG
+#
+cp ssh-banner /etc/ssh/ssh-banner
+echo "Banner /etc/ssh/ssh-banner" >> /etc/ssh/sshd_config
+systemctl restart sshd
+#
 echo "done.">>/root/INSTALL.LOG
 yum update -y
 reboot
