@@ -55,4 +55,7 @@ echo "Additionally define url in wp-config.php file"
 grep http /var/www/html/wp-config.php
 echo "define('WP_HOME','http://example.com');"
 echo "define('WP_SITEURL','http://example.com');"
+echo
+echo "Restore html directory"
+tar -xzvf /root/restore/html.$backupdate.tar.gz -C /
 
