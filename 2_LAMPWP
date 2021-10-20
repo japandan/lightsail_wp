@@ -35,7 +35,7 @@ useradd danvogel
 mkdir -p /home/danvogel/.ssh
 cp /home/centos/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
-hostnamectl set-hostname datos >>/root/INSTALL.LOG
+hostnamectl set-hostname mail >>/root/INSTALL.LOG
 #
 cp lightsail_wp/ssh-banner /etc/ssh/ssh-banner
 echo "Banner /etc/ssh/ssh-banner" >> /etc/ssh/sshd_config
