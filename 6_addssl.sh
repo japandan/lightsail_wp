@@ -26,4 +26,8 @@ systemctl reload nginx
 echo To obtain a new or tweaked   version of this certificate in the future, 
 echo simply run certbot again   with the "certonly" option. 
 echo To non-interactively renew *all* of   your certificates, run "certbot renew" 
+echo
+echo "Copying nginx config to /etc/nginx/sites-enabled/"
+cp /etc/nginx/sites-enabled/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf.bak
+cp /root/lightsail_wp/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf 
 echo done.
