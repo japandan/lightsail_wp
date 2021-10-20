@@ -11,6 +11,7 @@ mysql -uroot -e "create database wordpress"
 #
 echo "restore the wordpress database from backup"
 read -p "Backup date to restore in YYYY-MM-DD format >" backupdate
+echo "Restoring wordpress database..please wait"
 mysql -uwpadmin -pChangeM3 wordpress< /root/restore/wordpress.$backupdate.sql
 # now the password for wpadmin will not match the password in the old site's
 # wp-config.php file (unless it is "ChangeM3").  Change the password in mysql 
@@ -25,6 +26,7 @@ echo
 # also you will need to use mysql to change the wp_options id#1,2 which contains the 
 # name of the old wordpress URL/Home
 #MariaDB [wordpress]> select option_id,option_name,option_value from multi_options where option_id <3;
+echo "Checking the siteurl in wordpress database"
 mysql -uroot wordpress -e "select option_id,option_name,option_value from multi_options where option_id <3;"
 #+-----------+-------------+----------------------+
 #| option_id | option_name | option_value         |
