@@ -34,7 +34,7 @@ mysql -uroot wordpress -e "select option_id,option_name,option_value from multi_
 #+-----------+-------------+----------------------+
 # Change the option_values with this command
 #MariaDB [wordpress]> update multi_options set option_value="https://www.datos.asia" where option_id<3;
-mysql -u root wordpress -e "update multi_options set option_value="https://www.datostech.com" where option_id<3"
+mysql -u root wordpress -e 'update multi_options set option_value="https://www.datostech.com" where option_id<3'
 echo "checking if the URL is correct"
 mysql -uroot wordpress -e "select option_id,option_name,option_value from multi_options where option_id <3;"
 #Query OK, 2 rows affected (0.00 sec)Rows matched: 2  Changed: 2  Warnings: 0
