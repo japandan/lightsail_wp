@@ -6,19 +6,12 @@
 #for ease of use, I recommend executing ssh-keygen and ssh-copy-id to transfer ssh key to the backup
 #server so scp & ssh do not prompt for passwords.
 #
-# Retrieve the backups
-read -p "type the date of the backups in format YYYY-MM-DD" backupdate
-scp -P1965 danvogel@asus.datos.asia:/backupdir/wordpress.$backupdate.sql /root/
-scp -P1965 danvogel@asus.datos.asia:/backupdir/html.$backupdate.tar.gz /root/
-scp -P1965 danvogel@asus.datos.asia:/backupdir/etc.$backupdate.tar.gz /root/
-scp -P1965 danvogel@asus.datos.asia:/backupdir/scripts /root/
-##
-## delete the existing wordpress database and copy from backup
-#mysql -uroot 
-#MariaDB[(none)]> drop database wordpress;
-#MariaDB[(node)]> create database wordpress;
-#quit;
-mysql -uwpadmin -pChangeM3 wordpress< /root/wordpress.$backupdate.sql
+echo "create wordpress database"
+mysql -uroot -e"create database wordpress"
+#
+echo "restore the wordpress database from backup"
+read -p "Backup date to restore in YYYY-MM-DD format >" $backupdate
+mysql -uwpadmin -pChangeM3 wordpress< /root/restore/wordpress.$backupdate.sql
 # now the password for wpadmin will not match the password in the old site's
 # wp-config.php file (unless it is "ChangeM3").  Change the password in mysql 
 # for wpadmin to match the password in /var/www/html/wp-config.php
