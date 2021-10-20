@@ -4,7 +4,7 @@ echo "Backups are stored in ${backuppath}20YY/MM/##.tar.bz2"
 echo "untar the latest backup"
 read -p "Where is the backup sub-directory with user accounts? $backuppath" MYBACKUPDIR
 #
-export MYBACKUPDIR="${backuppath}${MYBACKUPDIR}
+export MYBACKUPDIR="${backuppath}${MYBACKUPDIR}"
 echo "user mailboxes found"
 ls -1 $MYBACKUPDIR
 #
