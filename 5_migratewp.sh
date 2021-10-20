@@ -51,7 +51,7 @@ mysql -uroot wordpress -e "select option_id,option_name,option_value from multi_
 #+-----------+-------------+-----------------------+
 #2 rows in set (0.00 sec)
 #
-echo "Additionally define url in wp-config.php file"
+echo "Additionally define url in wp-config.php file if needed. If the website reverts to the old URL"
 grep http /var/www/html/wp-config.php
 echo "define('WP_HOME','http://example.com');"
 echo "define('WP_SITEURL','http://example.com');"
