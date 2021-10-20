@@ -27,7 +27,8 @@ sed -i 's/127.0.0.1   localhost/127.0.0.1   mail.datos.asia mail localhost/' /et
 # that's all required to setup a full-featured mail server.
 #
 # Retrieve the backups
-read -p "type the date of the backups in format YYYY-MM-DD" backupdate
+echo "Getting backups of /var/vmail for restoring iredmail."
+read -p "type the date of the backups in format YYYY-MM-DD >" backupdate
 scp -P1965 danvogel@asus.datos.asia:/backupdir/iredmail.$backupdate.tar.gz /root/
 #
 # cd /root/iRedMail-x.y.z/
