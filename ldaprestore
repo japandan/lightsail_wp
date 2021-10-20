@@ -1,1 +1,14 @@
-
+#!/bin/bash
+# This will restore the user accounts into the ldap
+#
+echo "make a quick backup of the current database "
+slapcat -f /etc/openldap/slapd.conf  > backup.ldif
+echo "stop slapd service"
+systemctl stop slapd
+echo "remove old ldap data"
+rm -rf /var/lib/ldap/datostech.com/*
+echo "start/stop slapd to create empty databases"
+systemctl start slapd
+systemctl stop slapd
+echo "add the data from the backup"
+slapadd -f /etc/openldap/slapd.conf -l /root/restore/
