@@ -7,7 +7,7 @@ STEPS TO INSTALL
 2. In the box for + Launch script, copy & paste the text from the "launch-script" file in this repo.  This will automatically copy the
    this repo and use it to configure the server for Wordpress. It will install PHP7.3, Wordpress, MariaDB (MySQL), etc.
 
-3. Set up the static public IP of the lightsail instance and try to open the webpage at that IP.  You may have to open http & https in the Lightsail network settings and the firewall for the instance. 
+3. Attach the static public IP datos.asia-ip of the lightsail instance and try to ssh to centos@datos.asia.  Add https port in the Lightsail network setting firewall for the instance. 
 
 4. At this point, run iRedmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs.  
 
