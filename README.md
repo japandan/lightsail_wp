@@ -14,7 +14,7 @@ STEPS TO INSTALL
    bash /root/lightsail_wp/iredmail.sh 
    # The following will copy a single backup file for email.
    cd /root
-   tar -xvzf /root/iredmail.2020-12-08.tar.gz -C /
+   tar -xvzf /root/iredmail.2021-10-19.tar.gz -C /
    </pre>
    
 5. Run the script addssl.sh to install certbot and the free ssl certificates.  Test by going to https://datos.asia with a web browser.
