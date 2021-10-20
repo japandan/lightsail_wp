@@ -4,16 +4,15 @@ Lightsail (Amazon Web Services )installation scripts for CentOS 7 to create LAMP
 STEPS TO INSTALL
 1. login to lightsail.aws.amazon.com and [create instance].  Choose [OS Only] CentOS 7 2009-01
 
-2. In the box for Launch script, copy&paste the text from the "launch-script" file in this repo.  This will automatically copy the
+2. In the box for + Launch script, copy & paste the text from the "launch-script" file in this repo.  This will automatically copy the
    this repo and use it to configure the server for Wordpress. It will install PHP7.3, Wordpress, MariaDB (MySQL), etc.
 
 3. Set up the static public IP of the lightsail instance and try to open the webpage at that IP.  You may have to open http & https in the Lightsail network settings and the firewall for the instance. 
-4. At this point, run iRedmail.sh which will install the nginx webserver as well as postfix,dovecot, and SOGo email programs.  
-i.e. 
-<pre>
-#systemctl status httpd
-</pre>
-5. Run the script addssl.sh to install certbot and the free ssl certificates.  This will also create the /etc/httpd/conf.d/vhosts.conf file. Test by going to https://datos.asia with a web browser.
+
+4. At this point, run iRedmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs.  
+
+5. Run the script addssl.sh to install certbot and the free ssl certificates.  Test by going to https://datos.asia with a web browser.
+
 6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
    <pre>
    #passwd ftpuser     
@@ -28,7 +27,7 @@ i.e.
 8. Copy the /var/www/html directory and files from a backup.  As root do type:
 <pre>
   #cd /
-  #tar -xvzf /root/html.2020-12-08.tar.gz 
+  #tar -xvzf /root/html.2020-12-08.tar.gz -C /
 </pre>
 
 9. This will add wordpress files including the wp-config.php file and will break wordpress until you update the MySql database password. You will need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
@@ -40,9 +39,15 @@ i.e.
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
 11. Run the iredmail.sh scripts to install the mail programs.
-12. Restore the /var/vmail files from the iredmail backup.  This will recreate the mailboxes in /var/vmail/vmail1 and give you the files for restoring ldap accounts in /var/vmail/backups/ldap/.
-13. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
-14. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
+12. Restore the /var/vmail files from the iredmail backup.  This will recreate the mailboxes in /var/vmail/vmail1 and give you the files for restoring ldap accounts in /var/vmail/backups/ldap/.  
+<pre>
+  # The following will copy a single backup file for email.
+  #cd /root
+  #scp -p{port} {user}@<backup server>.datos.asia:/backupdir/iredmail.2020-12-08.tar.gz .
+  #tar -xvzf /root/iredmail.2020-12-08.tar.gz -C /
+</pre>
+14. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
+15. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
 i.e. /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
 15. Use the slapadd command after systemctl stop slapd and rm /var/lib/ldap/datostech.com/* 
 slapadd -f /etc/openldap/slapd.conf -l /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
