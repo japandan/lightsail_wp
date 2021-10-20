@@ -18,7 +18,7 @@ STEPS TO INSTALL
    </pre>
    
 5. Run the script addssl.sh to install certbot and the free ssl certificates.  Test by going to https://datos.asia with a web browser.
-6. 
+
 <pre>
 bash /root/lightsail_wp/addssl.sh
 </pre>
