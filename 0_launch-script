@@ -3,4 +3,4 @@ echo "STARTING LAMP INSTALLATION" >/root/INSTALL.LOG
 yum install -y wget git >>/root/INSTALL.LOG
 cd /root
 git clone https://github.com/japandan/lightsail_wp.git
-sh lightsail_wp/2_LAMPWP >>/root/INSTALL.LOG
+sh lightsail_wp/2_LAMPWP.sh >>/root/INSTALL.LOG
