@@ -62,6 +62,4 @@ chown -R nginx:nginx /var/www/html/*
 echo "Files restored.  Please set wordpress mysql password to match wp-config.php values"
 echo "These are the values for the database stored in /var/www/html/wp-config.php"
 grep DB_ /var/www/html/wp-config.php
-echo
-
-
+echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'ChangeM3';"
