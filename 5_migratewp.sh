@@ -58,4 +58,5 @@ echo "define('WP_SITEURL','http://example.com');"
 echo
 echo "Restore html directory"
 tar -xzvf /root/restore/html.$backupdate.tar.gz -C /
+chown -R nginx:nginx /var/www/html/*
 
