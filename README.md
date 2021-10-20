@@ -9,8 +9,14 @@ STEPS TO INSTALL
 
 3. Attach the static public IP datos.asia-ip of the lightsail instance and try to ssh to centos@datos.asia.  Add https port in the Lightsail network setting firewall for the instance. 
 
-4. At this point, run iRedmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs.  
-
+4. At this point, run iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs.  
+   <pre>
+   bash /root/lightsail_wp/iredmail.sh 
+   # The following will copy a single backup file for email.
+   cd /root
+   tar -xvzf /root/iredmail.2020-12-08.tar.gz -C /
+   </pre>
+   
 5. Run the script addssl.sh to install certbot and the free ssl certificates.  Test by going to https://datos.asia with a web browser.
 
 6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
@@ -34,22 +40,16 @@ STEPS TO INSTALL
 
   /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
 
-10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
+10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. 
+11. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
 
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
-11. Run the iredmail.sh scripts to install the mail programs.
-12. Restore the /var/vmail files from the iredmail backup.  This will recreate the mailboxes in /var/vmail/vmail1 and give you the files for restoring ldap accounts in /var/vmail/backups/ldap/.  
-<pre>
-  # The following will copy a single backup file for email.
-  #cd /root
-  #scp -p{port} {user}@<backup server>.datos.asia:/backupdir/iredmail.2020-12-08.tar.gz .
-  #tar -xvzf /root/iredmail.2020-12-08.tar.gz -C /
-</pre>
-14. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
-15. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
+  
+12. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
+13. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
 i.e. /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
-15. Use the slapadd command after systemctl stop slapd and rm /var/lib/ldap/datostech.com/* 
+14. Use the slapadd command after systemctl stop slapd and rm /var/lib/ldap/datostech.com/* 
 slapadd -f /etc/openldap/slapd.conf -l /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
 
 PROBLEMS Encountered:
