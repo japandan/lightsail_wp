@@ -7,14 +7,16 @@ read -p "Where is the backup sub-directory with user accounts? $backuppath" MYBA
 export MYBACKUPDIR="${backuppath}${MYBACKUPDIR}"
 echo "user mailboxes found"
 ls -1 $MYBACKUPDIR
+echo
 #
 USE_SIEVE=$(grep 'SOGoSieveScriptsEnabled = YES;' /etc/sogo/sogo.conf|cut -d '=' -f 2)
 #
 cd $MYBACKUPDIR 
+#
 for i in `ls` do
-  echo "----------------------------------"
+  echo ----------------------------------
   echo "RESTORE MAILBOX $i"
-  echo "----------------------------------"
+  echo ----------------------------------
   # create account in SOGo and set general preferences
   sogo-tool restore -p "${MYBACKUPDIR}" "${i}"
 
