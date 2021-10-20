@@ -15,9 +15,7 @@ cd $MYBACKUPDIR
 #
 for i in `ls` do
 #
-  echo ----------------------------------
   echo "RESTORE MAILBOX $i"
-  echo ----------------------------------
   # create account in SOGo and set general preferences
   sogo-tool restore -p "${MYBACKUPDIR}" "${i}"
 
