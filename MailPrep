@@ -42,14 +42,6 @@ echo "#mysql_secure_installation should be run manually or automated."
 mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
 #
 cd /root/lightsail_wp/
-# setup web server
-#cp vhost.conf /etc/httpd/conf.d/
-#start webserver
-#systemctl enable httpd
-#systemctl start httpd
-#systemctl status httpd>>/root/INSTALL.LOG
-#echo "vhost www.datos.asia added.  Please check with browser" >>/root/INSTALL.LOG
-#echo "If mysql <dbsetup.sql failed, run now">>/root/INSTALL.LOG
 #
 # create user and copy keys for ssh login
 useradd danvogel
