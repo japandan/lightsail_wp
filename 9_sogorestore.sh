@@ -14,6 +14,7 @@ USE_SIEVE=$(grep 'SOGoSieveScriptsEnabled = YES;' /etc/sogo/sogo.conf|cut -d '='
 cd $MYBACKUPDIR 
 #
 for i in `ls` do
+#
   echo ----------------------------------
   echo "RESTORE MAILBOX $i"
   echo ----------------------------------
