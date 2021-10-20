@@ -7,7 +7,7 @@
 #server so scp & ssh do not prompt for passwords.
 #
 echo "create wordpress database"
-mysql -uroot -e"create database wordpress"
+mysql -uroot -e "create database wordpress"
 #
 echo "restore the wordpress database from backup"
 read -p "Backup date to restore in YYYY-MM-DD format >" $backupdate
