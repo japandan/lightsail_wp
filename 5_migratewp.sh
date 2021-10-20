@@ -16,7 +16,10 @@ mysql -uwpadmin -pChangeM3 wordpress< /root/restore/wordpress.$backupdate.sql
 # wp-config.php file (unless it is "ChangeM3").  Change the password in mysql 
 # for wpadmin to match the password in /var/www/html/wp-config.php
 # Check the {password, username, database name, host} using this command
+echo
+echo "These are the values for the database stored in /var/www/html/wp-config.php"
 grep DB_ /var/www/html/wp-config.php
+echo
 # Set the password using this command.
 #
 # also you will need to use mysql to change the wp_options id#1,2 which contains the 
