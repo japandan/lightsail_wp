@@ -6,21 +6,17 @@
 #
 echo "Begin LAMPWP setup script for MariaDB,PHP 7.3 and Wordpress">>/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
-yum install -y epel-release mariadb-server 
-yum install -y tmux
+# This is mysql
+yum install -y epel-release mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 echo "there is no root password on mysql yet" >>/root/INSTALL.LOG
 echo "mysql_secure_installation should be run manually or automated.">>/root/INSTALL.LOG
 #
-# create database in mysql for new install of wp
-echo "create database wordpress;">dbsetup.sql
-echo "create user wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
-echo "grant all privileges on wordpress.* to wpadmin@localhost identified by 'ChangeM3';">>dbsetup.sql
-echo "flush privileges;">>dbsetup.sql
-echo "mysql_secure_installation should be run manually or automated."
-mysql -uroot <dbsetup.sql >>/root/INSTALL.LOG
-#
+# TMUX is a handy program to run in case you have scripts to run and need to disconnect
+# from the server while they run.  Run "tmux" after logging in.  If you get logged of
+# run "#tmux attach" to resume
+yum install -y tmux
 #
 # php 7.3 install
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
