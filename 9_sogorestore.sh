@@ -19,7 +19,7 @@ do
   if [ "${USE_SIEVE}" = ' YES;' ]
   then
     # restore all ACLs and SIEVE scripts
-    sogo-tool restore -p -c /etc/sogo/sieve.creds "${MYBACKUPDIR}" "${i}"
+    sogo-tool restore -p -c /etc/sogo/sieve.cred "${MYBACKUPDIR}" "${i}"
   else
     # restore all ACLs
     sogo-tool restore -p "${MYBACKUPDIR}" "${i}"
