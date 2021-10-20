@@ -1,5 +1,5 @@
 #~/bin/bash
-export backuppath="/var/vmail/backup/sogo/"
+export backuppath="/var/vmail/backup/sogo/2021/10/"
 echo "Backups are stored in ${backuppath}20YY/MM/##.tar.bz2"
 echo "untar the latest backup"
 read -p "Where is the backup sub-directory with user accounts? $backuppath" MYBACKUPDIR
