@@ -22,6 +22,7 @@ grep DB_ /var/www/html/wp-config.php
 # also you will need to use mysql to change the wp_options id#1,2 which contains the 
 # name of the old wordpress URL/Home
 #MariaDB [wordpress]> select option_id,option_name,option_value from multi_options where option_id <3;
+mysql -u root -e "select option_id,option_name,option_value from multi_options where option_id <3;"
 #+-----------+-------------+----------------------+
 #| option_id | option_name | option_value         |
 #+-----------+-------------+----------------------+
@@ -29,7 +30,10 @@ grep DB_ /var/www/html/wp-config.php
 #|         2 | home        | http://datostech.com |
 #+-----------+-------------+----------------------+
 # Change the option_values with this command
-#MariaDB [wordpress]> update multi_options set option_value="http://www.datos.asia" where option_id<3;
+#MariaDB [wordpress]> update multi_options set option_value="https://www.datos.asia" where option_id<3;
+mysql -u root -e "update multi_options set option_value="https://www.datostech.com" where option_id<3"
+echo "checking if the URL is correct"
+mysql -u root -e "select option_id,option_name,option_value from multi_options where option_id <3;"
 #Query OK, 2 rows affected (0.00 sec)Rows matched: 2  Changed: 2  Warnings: 0
 #
 # check them again...
