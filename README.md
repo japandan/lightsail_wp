@@ -41,11 +41,23 @@ STEPS TO INSTALL
   /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
 
 10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. 
-11. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.
-
+11. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.  If you are using nginx, add the following to the /etc/nginx/00-default.conf 
+<pre>
+location / {
+    index index.php index.html index.htm;
+    try_files $uri $uri/ /index.php?$args;
+}
+</pre>
+If you need to force ssl, add the following to /etc/nginx.conf but it's not needed if you have a plugin in Wordpress as we use.
+<pre>
+server {
+listen 80;
+server_name example.com;
+return 301 https://www.example.com$request_uri;
+}
+</pre>
 i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
 
-  
 12. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
 13. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
 i.e. /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
