@@ -10,7 +10,7 @@ echo "create wordpress database"
 mysql -uroot -e "create database wordpress"
 #
 echo "restore the wordpress database from backup"
-read -p "Backup date to restore in YYYY-MM-DD format >" $backupdate
+read -p "Backup date to restore in YYYY-MM-DD format >" backupdate
 mysql -uwpadmin -pChangeM3 wordpress< /root/restore/wordpress.$backupdate.sql
 # now the password for wpadmin will not match the password in the old site's
 # wp-config.php file (unless it is "ChangeM3").  Change the password in mysql 
