@@ -33,9 +33,8 @@ cp /home/centos/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
 hostnamectl set-hostname mail >>/root/INSTALL.LOG
 #
-cp /root/lightsail_wp/ssh-banner /etc/ssh/ssh-banner
-echo "Banner /etc/ssh/ssh-banner" >> /etc/ssh/sshd_config
-systemctl restart sshd
+echo "Adding login banner" >>/root/INSTALL.LOG
+cp /root/lightsail_wp/ssh-banner /etc/motd
 #
 echo "done.">>/root/INSTALL.LOG
 yum update -y
