@@ -1,12 +1,13 @@
 #~/bin/bash
-echo "Backups are stored in /var/vmail/backup/sogo/20YY/MM/##.tar.bz2"
+export backuppath="/var/vmail/backup/sogo/"
+echo "Backups are stored in ${backuppath}20YY/MM/##.tar.bz2"
 echo "untar the latest backup"
-read -p "Where is the backup directory with user accounts? " MYBACKUPDIR
+read -p "Where is the backup sub-directory with user accounts? $backuppath" MYBACKUPDIR
+#
 USE_SIEVE=$(grep 'SOGoSieveScriptsEnabled = YES;' /etc/sogo/sogo.conf|cut -d '=' -f 2)
 #
 cd $MYBACKUPDIR 
-for i in `ls`
-do
+for i in `ls` do
   echo "----------------------------------"
   echo "RESTORE MAILBOX $i"
   echo "----------------------------------"
