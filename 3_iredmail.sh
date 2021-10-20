@@ -4,12 +4,10 @@
 # Author: Daniel Vogel
 # Date: 18 Oct 2021
 #
-# Get the backup data from the backup server
-# for example"
-echo " scp -P{port} username@backup.example.com:/backupdir/iredmail.2021-10-19.tar.gz ."
-#
-echo "setting hostname in /etc/hosts"
-sed -i 's/127.0.0.1   localhost/127.0.0.1   mail.datos.asia mail localhost/' /etc/hosts
+echo "This script will do a clean install of iRedMail.  It should be run manually because some steps prompt the user."
+export FQDN="mail.datos.asia"
+echo "setting FQDN hostname $FQDN in /etc/hosts"
+sed -i "s/127.0.0.1   localhost/127.0.0.1   $FQDN mail localhost/" /etc/hosts
 #
 #Download the latest release of iRedMail
 #   Visit Download page to get the latest stable release of iRedMail.
@@ -25,11 +23,6 @@ sed -i 's/127.0.0.1   localhost/127.0.0.1   mail.datos.asia mail localhost/' /et
 #
 # It's now ready to start iRedMail installer, it will ask you several simple questions, 
 # that's all required to setup a full-featured mail server.
-#
-# Retrieve the backups
-echo "Getting backups of /var/vmail for restoring iredmail."
-read -p "type the date of the backups in format YYYY-MM-DD >" backupdate
-scp -P1965 danvogel@asus.datos.asia:/backupdir/iredmail.$backupdate.tar.gz /root/
 #
 # cd /root/iRedMail-x.y.z/
 # bash iRedMail.sh
@@ -49,4 +42,4 @@ tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
 #
-echo "Run #bash iRedMail.sh"
+bash iRedMail.sh
