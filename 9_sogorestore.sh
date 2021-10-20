@@ -13,7 +13,8 @@ USE_SIEVE=$(grep 'SOGoSieveScriptsEnabled = YES;' /etc/sogo/sogo.conf|cut -d '='
 #
 cd $MYBACKUPDIR 
 #
-for i in `ls` do
+for i in `ls`
+do
 #
   echo "RESTORE MAILBOX $i"
   # create account in SOGo and set general preferences
