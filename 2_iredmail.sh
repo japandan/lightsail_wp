@@ -41,10 +41,14 @@ wget https://github.com/iredmail/iRedMail/archive/1.4.2.tar.gz
 tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 #
+#
 MySQLPassword=$(cat /root/MySQLPassword )
 sed -i "s/ChangeM3/$MySQLPassword/" lightsail_wp/config
 cp -f lightsail_wp/config iRedMail*/
 cd iRedMail*
+#
+echo "Starting unattened iRedMail installation with these configs"
+cat iRedMail*/config
 #
 # Run this unattended
 #
