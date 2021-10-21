@@ -53,9 +53,14 @@ bash 3_addssl.sh
 12. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
 13. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
 i.e. /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
-14. Use the slapadd command after systemctl stop slapd and rm /var/lib/ldap/datostech.com/* 
+14. Use the slapadd command to restore ldap users.  Select the backup and use bunzip2 to decompress if the extension is .ldif.bz2
+<pre>
+systemctl stop slapd
+rm /var/lib/ldap/datostech.com/* 
+systemctl start slapd
+systemctl stop  slapd
 slapadd -f /etc/openldap/slapd.conf -l /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
-
+</pre>
 PROBLEMS Encountered:
 <pre>
 1. SELINUX causes problems.  If using SELINUX enforcing, change this boolean for httpd_anon_write->On
