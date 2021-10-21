@@ -37,4 +37,6 @@ echo "Adding login banner" >>/root/INSTALL.LOG
 cp /root/lightsail_wp/ssh-banner /etc/motd
 #
 yum update -y >>/root/INSTALL.LOG
-echo "done. rebooting.">>/root/INSTALL.LOGreboot
+echo "done. rebooting.">>/root/INSTALL.LOG
+#
+reboot
