@@ -25,7 +25,7 @@ sudo postconf -e "relayhost = [${smtp_host}]:587" \
 #
 #  If you find this entry, comment it out by placing a # (hash) character 
 #  at the beginning of the line. Save and close the file. 
-#
+echo "Obtain your SMTP credentials from Amazon via this link:  https://console.aws.amazon.com/ses/"
 read -p 'SMTPUSERNAME ? ' SMTPUSERNAME
 read -p 'SMTPPASSWORD ? ' SMTPPASSWORD
 echo "[${smtp_host}]:587 ${SMTPUSERNAME}:${SMTPPASSWORD}"|sudo tee /etc/postfix/sasl_passwd
