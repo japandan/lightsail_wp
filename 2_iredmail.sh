@@ -43,12 +43,15 @@ echo "cd into directory and type #bash iRedMail.sh"
 #
 #
 MySQLPassword=$(cat /root/MySQLPassword )
+echo "Please set the MySQL root password to $MySQLPassword"
+mysql_secure_installation
+#
 sed -i "s/ChangeM3/$MySQLPassword/" lightsail_wp/config
 cp -f lightsail_wp/config iRedMail*/
-cd iRedMail*
 #
 echo "Starting unattened iRedMail installation with these configs"
-cat iRedMail*/config
+cd iRedMail*
+cat config
 #
 # Run this unattended
 #
@@ -59,4 +62,3 @@ AUTO_USE_EXISTING_CONFIG_FILE=y \
     AUTO_CLEANUP_RESTART_FIREWALL=y \
     AUTO_CLEANUP_REPLACE_MYSQL_CONFIG=y \
     bash iRedMail.sh
-    
