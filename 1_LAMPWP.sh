@@ -14,12 +14,6 @@ yum install -y epel-release mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 echo "there is no root password on mysql yet" >>/root/INSTALL.LOG
-mysql -e "UPDATE mysql.user SET Password=PASSWORD($MySQLPassword) WHERE User=’root’;"
-mysql -e "DELETE FROM mysql.user WHERE User=’root’ AND Host NOT IN (‘localhost’, ‘127.0.0.1’, ‘::1’);"
-mysql -e "DELETE FROM mysql.user WHERE User=”;"
-mysql -e "DROP DATABASE test;"
-mysql -e "FLUSH PRIVILEGES;"
-#
 echo "mysql_secure_installation should be run manually or automated.">>/root/INSTALL.LOG
 #
 # TMUX is a handy program to run in case you have scripts to run and need to disconnect
