@@ -16,11 +16,13 @@ STEPS TO INSTALL
    tar -xvzf /root/iredmail.2021-10-19.tar.gz -C /
    </pre>
    
-5. Run the script 3_addssl.sh to install certbot and the free ssl Let's Encrypt certificates.  Test by going to https://datos.asia with a web browser. BEFORE RUNNING, CHECK SOGo.  I think this breaks SOGo login screen.
+5. Run the script 3_addssl.sh to install certbot and the free ssl Let's Encrypt certificates.  Test by going to https://datos.asia with a web browser. BEFORE RUNNING, CHECK SOGo.  I think this breaks SOGo login screen. The 4_aws_ses_postfix.sh script requires an AWS SES username and password. 
 
 <pre>
 bash /root/lightsail_wp/3_addssl.sh
+bash /root/lightsail_wp/4_aws_ses_postfix.sh
 </pre>
+
 
 6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
    <pre>
