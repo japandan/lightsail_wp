@@ -12,7 +12,10 @@ STEPS TO INSTALL
    <pre>
    bash /root/lightsail_wp/2_iredmail.sh 
    #
-   # The following will copy the backup file for email into /var/vmail
+   # If you want to start restoring the old email accounts, run the following to retrieve all the backups.
+   # _RestoreBackups.sh
+   # 
+   The following will copy the backup file for email into /var/vmail
    cd /root
    tar -xvzf /root/restore/iredmail.2021-10-19.tar.gz -C /
    </pre>
