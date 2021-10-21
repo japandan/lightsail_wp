@@ -16,7 +16,7 @@ wget http://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz
 sudo rsync -avP ~/wordpress/ /var/www/html/
 mkdir /var/www/html/wp-content/uploads
-sudo chown -R nginx:nginx /var/www/html/*
+sudo chown -R nginx:nginx /var/www/html
 #
 echo "open up the url for the website http://datos.asia and check if you can see the wordpress startup"
 echo "Go ahead and create a new wordpress site and test the blog/permalinks to make sure they work"
