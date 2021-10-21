@@ -7,12 +7,14 @@
 echo "Begin LAMPWP setup script for MariaDB,PHP 7.3 and Wordpress">>/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
 echo "MySQL root password is $1"
+export MySQLPassword="$1"
+echo $MySQLPassword >/root/MySQLPassword
 # This is mysql
 yum install -y epel-release mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 echo "there is no root password on mysql yet" >>/root/INSTALL.LOG
-mysql -e "UPDATE mysql.user SET Password=PASSWORD($1) WHERE User=’root’;"
+mysql -e "UPDATE mysql.user SET Password=PASSWORD($MySQLPassword) WHERE User=’root’;"
 mysql -e "DELETE FROM mysql.user WHERE User=’root’ AND Host NOT IN (‘localhost’, ‘127.0.0.1’, ‘::1’);"
 mysql -e "DELETE FROM mysql.user WHERE User=”;"
 mysql -e "DROP DATABASE test;"
