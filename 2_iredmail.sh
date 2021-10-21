@@ -40,6 +40,8 @@ cd /root
 wget https://github.com/iredmail/iRedMail/archive/1.4.2.tar.gz
 tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
+#
+cp -f lightsail_wp/config iRedMail*/
 cd iRedMail*
 #
 # Run this unattended
