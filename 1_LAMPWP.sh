@@ -6,12 +6,12 @@
 #
 echo "Begin LAMPWP setup script for MariaDB,PHP 7.3 and Wordpress">>/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
-echo "MySQL root password is $1"
 # This is mysql
 yum install -y epel-release mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 echo "there is no root password on mysql yet" >>/root/INSTALL.LOG
+echo "MySQL root password should be set to $(cat /root/MySQLPassword)" >>/root/INSTALL.LOG
 echo "mysql_secure_installation should be run manually or automated.">>/root/INSTALL.LOG
 #
 # TMUX is a handy program to run in case you have scripts to run and need to disconnect
