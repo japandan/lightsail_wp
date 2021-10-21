@@ -13,7 +13,7 @@ STEPS TO INSTALL
    bash /root/lightsail_wp/2_iredmail.sh 
    </pre>
    
-5. Run the script 3_addssl.sh to install certbot and the free ssl Let's Encrypt certificates.  Test by going to https://datos.asia with a web browser. BEFORE RUNNING, CHECK SOGo. 3_addssl.sh can break SOGo login screen. The 4_aws_ses_postfix.sh script requires an AWS SES username and password. 
+5. Run the script 3_addssl.sh to install certbot and the free ssl Let's Encrypt certificates.  Test by going to https://datos.asia/SOGo with a web browser. BEFORE RUNNING, CHECK SOGo. 3_addssl.sh can break SOGo login screen. The 4_aws_ses_postfix.sh script requires an AWS SES username and password. 
 
 <pre>
 bash /root/lightsail_wp/3_addssl.sh
