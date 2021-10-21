@@ -2,5 +2,6 @@
 echo "STARTING LAMP INSTALLATION" >/root/INSTALL.LOG
 yum install -y wget git >>/root/INSTALL.LOG
 cd /root
+export MySQLPassword="ChangeM3"
 git clone https://github.com/japandan/lightsail_wp.git
-sh lightsail_wp/1_LAMPWP.sh MySQLPassword >>/root/INSTALL.LOG
+sh lightsail_wp/1_LAMPWP.sh $MySQLPassword >>/root/INSTALL.LOG
