@@ -8,7 +8,8 @@ sed -i 's/server_name _;/server_name datos.asia www.datos.asia datostech.com mai
 sed -i 's/server_name _;/server_name datos.asia www.datos.asia datostech.com mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default-ssl.conf
 systemctl restart nginx
 #
-certbot --nginx -d datos.asia -d www.datos.asia -d mail.datostech.com -d www.datostech.com -d datostech.com
+# using certbot with the --nginx option breaks iredmail and SOGo
+certbot -d datos.asia -d www.datos.asia -d mail.datostech.com -d www.datostech.com -d datostech.com
 #Congratulations! You have successfully enabled https://aws.datos.asia and https://vhost1.datos.asia
 #
 echo You should test your configuration at:
