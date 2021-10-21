@@ -32,8 +32,8 @@ cp /etc/nginx/sites-enabled/00-default-ssl.conf /etc/nginx/sites-enabled/00-defa
 cp /root/lightsail_wp/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf 
 echo
 echo "Replacing iRedMail certificates"
-rm -f /etc/pki/tls/private/iRedMail.key 
-rm -f /etc/pki/tls/certs/iRedMail.crt 
+mv -f /etc/pki/tls/private/iRedMail.key /root/
+mv -f /etc/pki/tls/certs/iRedMail.crt   /root/
 ln -s /etc/letsencrypt/live/datos.asia/privkey.pem /etc/pki/tls/private/iRedMail.key
 ln -s /etc/letsencrypt/live/datos.asia/fullchain.pem /etc/pki/tls/certs/iRedMail.crt
 #
