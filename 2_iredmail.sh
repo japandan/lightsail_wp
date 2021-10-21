@@ -43,7 +43,7 @@ echo "cd into directory and type #bash iRedMail.sh"
 #
 cp -f lightsail_wp/config iRedMail*/
 MySQLPassword=$(cat /root/MySQLPassword )
-sed -i "s/ChangeM3/$MySQLPassword/" lightsail_wp/config
+sed -i "s/ChangeM3/$MySQLPassword/" iRedMail*/config
 cd iRedMail*
 #
 # Run this unattended
