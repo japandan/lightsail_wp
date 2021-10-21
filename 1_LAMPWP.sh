@@ -36,6 +36,5 @@ hostnamectl set-hostname mail >>/root/INSTALL.LOG
 echo "Adding login banner" >>/root/INSTALL.LOG
 cp /root/lightsail_wp/ssh-banner /etc/motd
 #
-echo "done.">>/root/INSTALL.LOG
-yum update -y
-reboot
+yum update -y >>/root/INSTALL.LOG
+echo "done. rebooting.">>/root/INSTALL.LOGreboot
