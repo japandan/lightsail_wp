@@ -21,13 +21,14 @@ STEPS TO INSTALL
 <pre>
 bash /root/lightsail_wp/3_addssl.sh
 bash /root/lightsail_wp/4_aws_ses_postfix.sh
+bash /root/lightsail_wp/5_wordpress.sh
 </pre>
 
 
-6. Run the script vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
+6. Run the script 9_vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
    <pre>
    #passwd ftpuser     
-   #bash ./vsftpd.sh
+   #bash ./9_vsftpd.sh
    </pre>
    
 7. Run the script to copy a database backup from a remote server to this server and restore wordpress. Just enter the backup date in YYYY-MM-DD. This will delete the current MySQL wordpress database and try to create a new one with the latest backup that you specified.
