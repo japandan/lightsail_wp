@@ -11,13 +11,6 @@ STEPS TO INSTALL
 4. At this point, run 2_iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs. The password saved in /root/MySQLPassword will be used for iredmail. Run mysql_secure_installation to set the MySQL root password.  
    <pre>
    bash /root/lightsail_wp/2_iredmail.sh 
-   #
-   # If you want to start restoring the old email accounts, run the following to retrieve all the backups.
-   # _RestoreBackups.sh
-   # 
-   The following will copy the backup file for email into /var/vmail
-   cd /root
-   tar -xvzf /root/restore/iredmail.2021-10-19.tar.gz -C /
    </pre>
    
 5. Run the script 3_addssl.sh to install certbot and the free ssl Let's Encrypt certificates.  Test by going to https://datos.asia with a web browser. BEFORE RUNNING, CHECK SOGo.  I think this breaks SOGo login screen. The 4_aws_ses_postfix.sh script requires an AWS SES username and password. 
@@ -27,9 +20,14 @@ bash /root/lightsail_wp/3_addssl.sh
 bash /root/lightsail_wp/4_aws_ses_postfix.sh
 ## install clean wordpress 
 bash /root/lightsail_wp/5_wordpress.sh
-## restore email from backups
-bash /root/lightsail_wp/7_migratemail.sh
-bash /root/lightsail_wp/8_sogo_restore.sh
+# If you want to start restoring the old email accounts, run the following to retrieve all the backups.
+bash /root/lightsail_wp/_RestoreBackups.sh
+#The following will copy the backup file for email into /var/vmail
+cd /root/restore
+tar -xvzf iredmail.2021-10-19.tar.gz -C /
+bash 8_sogo_restore.sh
+# the following will copy the wordpress data from the backups
+bash 7_migratemail.sh
 </pre>
 
 
