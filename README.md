@@ -8,68 +8,47 @@ STEPS TO INSTALL
 
 3. Attach the static public IP datos.asia-ip of the lightsail instance and try to ssh to centos@datos.asia.  Go to Manage/Networking for the instance and add https port in the Lightsail IPV4 firewall. For ssh to work, you will need to download and install in your  /.ssh directory the default ssh key used by the instance.
 
-4. At this point, run 2_iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs. The password saved in /root/MySQLPassword will be used for iredmail. Run mysql_secure_installation to set the MySQL root password.  
+4. At this point, run 2_iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs. The password saved in /root/MySQLPassword will be used for iredmail. 2_iredmail.sh will run mysql_secure_installation to set the MySQL root password.  Test by going to https://datos.asia/SOGo with a web browser.  Login as postmaster@datostech.com
    <pre>
-   bash /root/lightsail_wp/2_iredmail.sh 
+   bash 2_iredmail.sh 
    </pre>
    
-5. Run the script 3_addssl.sh to install certbot and the free ssl Let's Encrypt certificates.  Test by going to https://datos.asia/SOGo with a web browser. BEFORE RUNNING, CHECK SOGo. 3_addssl.sh can break SOGo login screen. The 4_aws_ses_postfix.sh script requires an AWS SES username and password. 
+5. The 4_aws_ses_postfix.sh script will ask you for an AWS SES SMTP username and password which can be downloaded from Amazon Web Console. This script will configure postfix to use the Amazon SMTP server.  Test by sending emails from SOGo and Dovecot, https://datos.asia/mail. 
 
 <pre>
-bash /root/lightsail_wp/3_addssl.sh
 bash /root/lightsail_wp/4_aws_ses_postfix.sh
-## install clean wordpress 
-bash /root/lightsail_wp/5_wordpress.sh
-# If you want to start restoring the old email accounts, run the following to retrieve all the backups.
-bash /root/lightsail_wp/_RestoreBackups.sh
+</pre>
+
+6. Install a new wordpress site. Go to URL https://datos.asia to complete the setup. Add a post and a post category menu item to test permlinks.
+<pre> 
+bash 5_wordpress.sh
+</pre>
+
+7. If you want to start restoring the old email accounts, run the following to retrieve all the backups.
+<pre>
+bash _RestoreBackups.sh
 #The following will copy the backup file for email into /var/vmail
 cd /root/restore
 tar -xvzf iredmail.2021-10-19.tar.gz -C /
 bash 8_sogo_restore.sh
-# the following will copy the wordpress data from the backups
+
+8. The following will copy the wordpress data from the backups. Just enter the backup date in YYYY-MM-DD. This will delete the current MySQL wordpress database and try to create a new one with the latest backup that you specified.
+
+<pre>
 bash 7_migratemail.sh
 </pre>
 
+9. The script 3_addssl.sh can break SOGo login screen. It will get a new SSL certificate from Let's Encrypt.  These need to be installed manually. Do not use the certbot --nginx option.
+<pre>
+bash 3_addssl.sh
+</pre>
 
-6. Run the script 9_vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
+10. Run the script 9_vsftpd.sh to install FTP and create a user called ftpuser for Wordpress updates.  This user is in the apache group. This should start the ftp server so test by logging in with ftp.  You need to install ftp client software if you are testing from the new server..also set the password for the ftpuser.  i.e.
    <pre>
    #passwd ftpuser     
    #bash ./9_vsftpd.sh
    </pre>
-   
-7. Run the script to copy a database backup from a remote server to this server and restore wordpress. Just enter the backup date in YYYY-MM-DD. This will delete the current MySQL wordpress database and try to create a new one with the latest backup that you specified.
-<pre>
-   #bash migratewp.sh
-</pre>
-
-8. Copy the /var/www/html directory and files from a backup.  As root do type:
-<pre>
-  #cd /
-  #tar -xvzf /root/html.2020-12-08.tar.gz -C /
-</pre>
-
-9. This will add wordpress files including the wp-config.php file and will break wordpress until you update the MySql database password. You will need to set the mysql password to match the password stored in the wp-config.php file, or edit the wp-config.php password to match your mysql password.
-
-  /** MySQL database password */define('DB_PASSWORD', 'PASSWORD');
-
-10. The wordpress site should now work.  If you have changed the URL of the wordpress site, you will need to replace any hardcoded URL with the new website. 
-11. Follow instruction in migratewp.sh to change the URL of wordpress stored in the mysql database.  If you are using nginx, add the following to the /etc/nginx/00-default.conf 
-<pre>
-location / {
-    index index.php index.html index.htm;
-    try_files $uri $uri/ /index.php?$args;
-}
-</pre>
-If you need to force ssl, add the following to /etc/nginx.conf but it's not needed if you have a plugin in Wordpress as we use.
-<pre>
-server {
-listen 80;
-server_name example.com;
-return 301 https://www.example.com$request_uri;
-}
-</pre>
-i.e. The login link may be pointing to http://datostech.com/login.php and will need to point to http://datos.asia/login.php if this is the new website URL.
-
+11. Test wordpress
 12. Restore ldap using the slapadd command after you have installed a fresh working copy of iredmail.
 13. Backup the current ldap using slapcat -f /etc/openldap/slapd.conf and copy the "userPassword::" entries from this for users "vmail" and "vmailadmin" into the same location of the ldap backup .ldif that you want to restore.  
 i.e. /var/vmail/backup/ldap/2021/10/2021-10-09-03-00-01.ldif
