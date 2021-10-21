@@ -30,4 +30,11 @@ echo
 echo "Copying nginx config to /etc/nginx/sites-enabled/"
 cp /etc/nginx/sites-enabled/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf.bak
 cp /root/lightsail_wp/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf 
+echo
+echo "Replacing iRedMail certificates"
+rm -f /etc/pki/tls/private/iRedMail.key 
+rm -f /etc/pki/tls/certs/iRedMail.crt 
+ln -s /etc/letsencrypt/live/datos.asia/privkey.pem /etc/pki/tls/private/iRedMail.key
+ln -s /etc/letsencrypt/live/datos.asia/fullchain.pem /etc/pki/tls/certs/iRedMail.crt
+#
 echo done.
