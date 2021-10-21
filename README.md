@@ -21,7 +21,11 @@ STEPS TO INSTALL
 <pre>
 bash /root/lightsail_wp/3_addssl.sh
 bash /root/lightsail_wp/4_aws_ses_postfix.sh
+## install clean wordpress 
 bash /root/lightsail_wp/5_wordpress.sh
+## restore email from backups
+bash /root/lightsail_wp/7_migratemail.sh
+bash /root/lightsail_wp/8_sogo_restore.sh
 </pre>
 
 
