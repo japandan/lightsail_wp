@@ -4,12 +4,11 @@ Lightsail (Amazon Web Services )installation scripts for CentOS 7 to create LAMP
 STEPS TO INSTALL
 1. login to lightsail.aws.amazon.com and [create instance].  Choose [OS Only] CentOS 7 2009-01
 
-2. In the box for + Launch script, copy & paste the text from the "launch-script" file in this repo.  This will automatically copy the
-   this repo and use it to configure the server for Wordpress. It will install PHP7.3, Wordpress, MariaDB (MySQL), etc.
+2. In the box for + Launch script, copy & paste the text from the "0_launch-script" file in this repo.  This will automatically copy this repo and use it to configure the server for Wordpress. It will run 1_LAMPWP.sh to install PHP7.3, Wordpress, MariaDB (MySQL), etc.
 
 3. Attach the static public IP datos.asia-ip of the lightsail instance and try to ssh to centos@datos.asia.  Go to Manage/Networking for the instance and add https port in the Lightsail IPV4 firewall. For ssh to work, you will need to download and install in your  /.ssh directory the default ssh key used by the instance.
 
-4. At this point, run iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs.  
+4. At this point, run 2_iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs.  
    <pre>
    bash /root/lightsail_wp/iredmail.sh 
    # The following will copy a single backup file for email.
