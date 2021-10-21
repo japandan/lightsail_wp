@@ -31,6 +31,7 @@ bash _RestoreBackups.sh
 cd /root/restore
 tar -xvzf iredmail.2021-10-19.tar.gz -C /
 bash 8_sogo_restore.sh
+</pre>
 
 8. The following will copy the wordpress data from the backups. Just enter the backup date in YYYY-MM-DD. This will delete the current MySQL wordpress database and try to create a new one with the latest backup that you specified.
 
