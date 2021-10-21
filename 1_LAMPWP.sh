@@ -7,8 +7,6 @@
 echo "Begin LAMPWP setup script for MariaDB,PHP 7.3 and Wordpress">>/root/INSTALL.LOG
 echo "Installing mariadb(mysql)" >>/root/INSTALL.LOG
 echo "MySQL root password is $1"
-export MySQLPassword="$1"
-echo $MySQLPassword > /root/MySQLPassword
 # This is mysql
 yum install -y epel-release mariadb-server
 systemctl start mariadb
