@@ -42,4 +42,13 @@ tar -xzvf 1.4.2.tar.gz
 echo "cd into directory and type #bash iRedMail.sh"
 cd iRedMail*
 #
-bash iRedMail.sh
+# Run this unattended
+#
+AUTO_USE_EXISTING_CONFIG_FILE=y \
+    AUTO_INSTALL_WITHOUT_CONFIRM=y \
+    AUTO_CLEANUP_REMOVE_SENDMAIL=y \
+    AUTO_CLEANUP_REPLACE_FIREWALL_RULES=y \
+    AUTO_CLEANUP_RESTART_FIREWALL=y \
+    AUTO_CLEANUP_REPLACE_MYSQL_CONFIG=y \
+    bash iRedMail.sh
+    
