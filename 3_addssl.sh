@@ -4,12 +4,12 @@
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
 sudo yum install -y certbot-nginx bind-utils
 ## Add the server names for the ssl
-sed -i 's/server_name _;/server_name datos.asia www.datos.asia datostech.com mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default.conf 
-sed -i 's/server_name _;/server_name datos.asia www.datos.asia datostech.com mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default-ssl.conf
+sed -i 's/server_name _;/server_name datos.asia www.datos.asia mail.datos.asia datostech.com mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default.conf 
+sed -i 's/server_name _;/server_name datos.asia www.datos.asia mail.datos.asia datostech.com mail.datostech.com www.datostech.com;/' /etc/nginx/sites-enabled/00-default-ssl.conf
 systemctl restart nginx
 #
 # using certbot with the --nginx option breaks iredmail and SOGo
-certbot -d datos.asia -d www.datos.asia -d mail.datostech.com -d www.datostech.com -d datostech.com
+certbot -d datos.asia -d www.datos.asia  -d mail.datos.asia -d mail.datostech.com -d www.datostech.com -d datostech.com
 #Congratulations! You have successfully enabled https://aws.datos.asia and https://vhost1.datos.asia
 #
 echo You should test your configuration at:
