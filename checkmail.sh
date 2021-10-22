@@ -5,5 +5,7 @@ systemctl status mariadb
 systemctl status postfix
 systemctl status iredapd
 systemctl status dovecot
-systemctl status clamav
 systemctl status slapd
+# stop clamav because memory was low
+#systemctl status clamav
+
