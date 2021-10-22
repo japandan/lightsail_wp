@@ -41,5 +41,5 @@ ln -s /etc/letsencrypt/live/datostech.com/fullchain.pem /etc/pki/tls/certs/iRedM
 systemctl restart postfix
 systemctl restart dovecot
 systemctl restart sogod
-systemctl restarg nginx
+systemctl restart nginx
 echo done.
