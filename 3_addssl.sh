@@ -12,16 +12,9 @@ systemctl restart nginx
 certbot  -d datostech.com  -d mail.datostech.com -d www.datostech.com -d datos.asia -d www.datos.asia
 #Congratulations! You have successfully enabled https://aws.datos.asia and https://vhost1.datos.asia
 #
-#   
-#echo Adding more security diffie-Hellman
-#openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
-#sed -i '/server/a ssl_dhparam /etc/ssl/certs/dhparam.pem;' /etc/nginx/nginx.conf
-#nginx -t
-#systemctl reload nginx
-#
 echo To obtain a new or tweaked   version of this certificate in the future, 
 echo simply run certbot again   with the "certonly" option. 
-echo To non-interactively renew *all* of   your certificates, run "certbot renew" 
+echo To non-interactively renew *all* of your certificates, run "certbot renew" 
 echo
 echo "Copying nginx config to /etc/nginx/sites-enabled/"
 cp /etc/nginx/sites-enabled/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf.bak
