@@ -4,5 +4,5 @@ yum install -y wget git >>/root/INSTALL.LOG
 cd /root
 export MySQLPassword='ChangeM3'
 echo $MySQLPassword > MySQLPassword
-git clone https://github.com/japandan/lightsail_wp.git
+git clone git@github.com:japandan/lightsail_wp.git
 sh lightsail_wp/1_LAMPWP.sh >>/root/INSTALL.LOG
