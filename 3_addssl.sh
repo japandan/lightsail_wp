@@ -36,4 +36,4 @@ echo done.
 echo You should test your configuration at:
 echo https://www.ssllabs.com/ssltest/analyze.html?d=datostech.com
 echo https://www.ssllabs.com/ssltest/analyze.html?d=mail.datostech.com
-echo https://www.ssllabs.com/ssltest/analyze.html?d=www.datostech.com
+echo https://www.ssllabs.com/ssltest/analyze.html?d=aws.datostech.com/
