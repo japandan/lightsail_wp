@@ -29,7 +29,7 @@ useradd danvogel
 mkdir -p /home/danvogel/.ssh
 cp /home/centos/.ssh/authorized_keys /home/danvogel/.ssh/
 chown -R danvogel:danvogel /home/danvogel/.ssh/*
-hostnamectl set-hostname mail >>/root/INSTALL.LOG
+hostnamectl set-hostname www.datostech.com >>/root/INSTALL.LOG
 #
 echo "Adding login banner" >>/root/INSTALL.LOG
 cp /root/lightsail_wp/ssh-banner /etc/motd
