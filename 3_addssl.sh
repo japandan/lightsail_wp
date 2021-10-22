@@ -38,4 +38,8 @@ mv -f /etc/pki/tls/certs/iRedMail.crt   /etc/pki/tls/certs/iRedMail.crt.bak
 ln -s /etc/letsencrypt/live/datostech.com/privkey.pem /etc/pki/tls/private/iRedMail.key
 ln -s /etc/letsencrypt/live/datostech.com/fullchain.pem /etc/pki/tls/certs/iRedMail.crt
 #
+systemctl restart postfix
+systemctl restart dovecot
+systemctl restart sogod
+systemctl restarg nginx
 echo done.
