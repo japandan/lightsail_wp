@@ -1,4 +1,5 @@
 ## Paste this Launch script into AWS Lightsail Launch script field when building a new instance.
+## After pasting, change the MySQLPassword if you want
 echo "STARTING LAMP INSTALLATION" >/root/INSTALL.LOG
 yum install -y wget git >>/root/INSTALL.LOG
 cd /root
