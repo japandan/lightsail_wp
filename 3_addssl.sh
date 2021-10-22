@@ -35,7 +35,7 @@ echo
 echo "Replacing iRedMail certificates"
 mv -f /etc/pki/tls/private/iRedMail.key /etc/pki/tls/private/iRedMail.key.bak
 mv -f /etc/pki/tls/certs/iRedMail.crt   /etc/pki/tls/certs/iRedMail.crt.bak
-ln -s /etc/letsencrypt/live/datos.asia/privkey.pem /etc/pki/tls/private/iRedMail.key
-ln -s /etc/letsencrypt/live/datos.asia/fullchain.pem /etc/pki/tls/certs/iRedMail.crt
+ln -s /etc/letsencrypt/live/datostech.com/privkey.pem /etc/pki/tls/private/iRedMail.key
+ln -s /etc/letsencrypt/live/datostech.com/fullchain.pem /etc/pki/tls/certs/iRedMail.crt
 #
 echo done.
