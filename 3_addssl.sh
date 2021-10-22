@@ -12,11 +12,6 @@ systemctl restart nginx
 certbot  -d datostech.com  -d mail.datostech.com -d www.datostech.com -d datos.asia -d www.datos.asia  -d mail.datos.asia
 #Congratulations! You have successfully enabled https://aws.datos.asia and https://vhost1.datos.asia
 #
-echo You should test your configuration at:
-echo https://www.ssllabs.com/ssltest/analyze.html?d=datos.asia
-echo https://www.ssllabs.com/ssltest/analyze.html?d=mail.datostech.com
-echo https://www.ssllabs.com/ssltest/analyze.html?d=www.datostech.com
-#
 #   
 #echo Adding more security diffie-Hellman
 #openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
@@ -43,3 +38,8 @@ systemctl restart dovecot
 systemctl restart sogod
 systemctl restart nginx
 echo done.
+#
+echo You should test your configuration at:
+echo https://www.ssllabs.com/ssltest/analyze.html?d=datos.asia
+echo https://www.ssllabs.com/ssltest/analyze.html?d=mail.datostech.com
+echo https://www.ssllabs.com/ssltest/analyze.html?d=www.datostech.com
