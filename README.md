@@ -8,7 +8,7 @@ STEPS TO INSTALL
 
 3. Attach the static public IP datos.asia-ip of the lightsail instance and try to ssh to centos@datos.asia.  Go to Manage/Networking for the instance and add https port in the Lightsail IPV4 firewall. For ssh to work, you will need to download and install in your  /.ssh directory the default ssh key used by the instance.
 
-4. At this point, run 2_iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs. The password saved in /root/MySQLPassword will be used for iredmail. 2_iredmail.sh will run mysql_secure_installation to set the MySQL root password.  Test by going to https://datos.asia/SOGo with a web browser.  Login as postmaster@datostech.com
+4. Log into the server instance as user "centos".  Execute "sudo su" and "cd /root/lightsail_wp" to login as root and enter this repo folder.  Run 2_iredmail.sh which will install the nginx webserver as well as postfix, dovecot, and SOGo email programs. The password saved in /root/MySQLPassword will be used for iredmail. 2_iredmail.sh will run mysql_secure_installation to set the MySQL root password.  Test by going to https://datos.asia/SOGo with a web browser.  Login as postmaster@datostech.com
    <pre>
    bash 2_iredmail.sh 
    </pre>
