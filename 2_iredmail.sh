@@ -5,7 +5,7 @@
 # Date: 18 Oct 2021
 #
 echo "This script will do a clean install of iRedMail.  It should be run manually because some steps prompt the user."
-export FQDN="mail.datos.asia"
+export FQDN="mail.datostech.com"
 echo "setting FQDN hostname $FQDN in /etc/hosts"
 sed -i "s/127.0.0.1   localhost/127.0.0.1   $FQDN mail localhost/" /etc/hosts
 #
