@@ -17,10 +17,9 @@ echo simply run certbot again   with the "certonly" option.
 echo To non-interactively renew *all* of your certificates, run "certbot renew" 
 echo
 echo "Copying nginx config to /etc/nginx/sites-enabled/"
-cp /etc/nginx/sites-enabled/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf.bak
 cp /etc/nginx/sites-enabled/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf.before.addssl
-cp /root/lightsail_wp/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf 
-echo
+#cp /root/lightsail_wp/00-default-ssl.conf /etc/nginx/sites-enabled/00-default-ssl.conf 
+echo no changes made to 00-default-ssl.conf
 echo "Replacing iRedMail certificates"
 mv -f /etc/pki/tls/private/iRedMail.key /etc/pki/tls/private/iRedMail.key.bak
 mv -f /etc/pki/tls/certs/iRedMail.crt   /etc/pki/tls/certs/iRedMail.crt.bak
