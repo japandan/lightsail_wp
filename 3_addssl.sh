@@ -4,6 +4,7 @@
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
 sudo yum install -y certbot-nginx bind-utils certbot
 ## Add the server names for the ssl
+echo adding hostnames to 00-default conf for nginx server_name datostech.com mail.datostech.com www.datostech.com aws.datostech.com
 sed -i 's/server_name _;/server_name datostech.com mail.datostech.com www.datostech.com aws.datostech.com;/' /etc/nginx/sites-enabled/00-default.conf 
 sed -i 's/server_name _;/server_name datostech.com mail.datostech.com www.datostech.com aws.datostech.com;/' /etc/nginx/sites-enabled/00-default-ssl.conf
 systemctl restart nginx
